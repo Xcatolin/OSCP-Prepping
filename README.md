@@ -14,6 +14,9 @@
 </pre>
 
 #### Some WriteUps of machines i pwned from CTF platforms like TryHackMe and VulnHub
+
+##### All content is uploaded in the .ctd extension, exported from CherryTree.
+
 > <i>  I'm not posting HackTheBox stuff due to platform rules. 
 
 > All the content i have on the [HackTheBox](https://github.com/Xcatolin/HackTheBox) repository is password-protected.</i>
