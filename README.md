@@ -20,9 +20,10 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
+:dart: `3/36`
+  
 - [x] [DC 9](https://www.vulnhub.com/entry/dc-9,412/) `PWNED`
 - [x] [DevGuru 1](https://www.vulnhub.com/entry/devguru-1,620/) `PWNED`
-- [X] [Healthcare 1](https://www.vulnhub.com/entry/healthcare-1,522/) `PWNED`
 - [ ] [Digitalworld.local (Bravery)](https://www.vulnhub.com/entry/digitalworldlocal-bravery,281/)
 - [ ] [Digitalworld.local (Development)](https://www.vulnhub.com/entry/digitalworldlocal-development,280/)
 - [ ] [Digitalworld.local (Mercy v2)](https://www.vulnhub.com/entry/digitalworldlocal-mercy-v2,263/)
@@ -54,6 +55,7 @@
 - [ ] [Pinkys Palace v1](https://www.vulnhub.com/entry/pinkys-palace-v1,225/)
 - [ ] [Lord of the root 1.0.1](https://www.vulnhub.com/entry/lord-of-the-root-101,129/)
 - [ ] [Tiki-1](https://www.vulnhub.com/entry/tiki-1,525/)
+- [X] [Healthcare 1](https://www.vulnhub.com/entry/healthcare-1,522/) `PWNED`
 - [ ] [Photographer 1](https://www.vulnhub.com/entry/photographer-1,519/)
 - [ ] [Glasglow 1.1](https://www.vulnhub.com/entry/glasgow-smile-11,491/)
 - [ ] <strike> [Alpha 1](https://www.vulnhub.com/entry/alfa-1,655/)</strike> `Offline`
