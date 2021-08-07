@@ -28,7 +28,7 @@
 - [ ] [Digitalworld.local (Development)](https://www.vulnhub.com/entry/digitalworldlocal-development,280/)
 - [ ] [Digitalworld.local (Mercy v2)](https://www.vulnhub.com/entry/digitalworldlocal-mercy-v2,263/)
 - [ ] [Digitalworld.local (JOY)](https://www.vulnhub.com/entry/digitalworldlocal-joy,298/)
-- [x] [Prime 1](https://www.vulnhub.com/entry/prime-1,358/)
+- [x] [Prime 1](https://www.vulnhub.com/entry/prime-1,358/) `PWNED`
 - [ ] [Symfonos 1](https://www.vulnhub.com/entry/symfonos-1,322/)
 - [ ] [Symfonos 2](https://www.vulnhub.com/entry/symfonos-2,331/)
 - [ ] [Symfonos 3](https://www.vulnhub.com/entry/symfonos-3,332/)
