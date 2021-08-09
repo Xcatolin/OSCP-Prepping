@@ -20,9 +20,9 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `5/37`
+:dart: `6/37`
  
-- [ ] [School 1]( https://www.vulnhub.com/entry/school-1,613/)
+- [X] [School 1]( https://www.vulnhub.com/entry/school-1,613/) `PWNED`
 - [x] [DC 9](https://www.vulnhub.com/entry/dc-9,412/) `PWNED`
 - [x] [DevGuru 1](https://www.vulnhub.com/entry/devguru-1,620/) `PWNED`
 - [ ] [Digitalworld.local (Bravery)](https://www.vulnhub.com/entry/digitalworldlocal-bravery,281/)
