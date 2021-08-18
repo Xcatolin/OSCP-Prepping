@@ -20,7 +20,7 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `8/37`
+:dart: `9/37`
  
 - [X] [School 1]( https://www.vulnhub.com/entry/school-1,613/) `PWNED`
 - [x] [DC 9](https://www.vulnhub.com/entry/dc-9,412/) `PWNED`
@@ -50,7 +50,7 @@
 - [ ] [Toppo 1](https://www.vulnhub.com/entry/toppo-1,245/)
 - [ ] [W34kn3ss 1](https://www.vulnhub.com/entry/w34kn3ss-1,270/)
 - [ ] [GoldenEye 1](https://www.vulnhub.com/entry/goldeneye-1,240/)
-- [ ] [Infosec Prep OSCP Box](https://www.vulnhub.com/entry/infosec-prep-oscp,508/)
+- [X] [Infosec Prep OSCP Box](https://www.vulnhub.com/entry/infosec-prep-oscp,508/) `PWNED`
 - [ ] [LemonSqueezy](https://www.vulnhub.com/entry/lemonsqueezy-1,473/)
 - [X] [Brainpan 1](https://www.vulnhub.com/entry/brainpan-1,51/) `PWNED`
 - [ ] [Pinkys Palace v1](https://www.vulnhub.com/entry/pinkys-palace-v1,225/)
