@@ -20,7 +20,7 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `11/37`
+:dart: `12/37`
  
 - [X] [School 1]( https://www.vulnhub.com/entry/school-1,613/) `PWNED`
 - [x] [DC 9](https://www.vulnhub.com/entry/dc-9,412/) `PWNED`
@@ -54,7 +54,7 @@
 - [ ] [LemonSqueezy](https://www.vulnhub.com/entry/lemonsqueezy-1,473/)
 - [X] [Brainpan 1](https://www.vulnhub.com/entry/brainpan-1,51/) `PWNED`
 - [ ] [Pinkys Palace v1](https://www.vulnhub.com/entry/pinkys-palace-v1,225/)
-- [ ] [Lord of the root 1.0.1](https://www.vulnhub.com/entry/lord-of-the-root-101,129/)
+- [X] [Lord of the root 1.0.1](https://www.vulnhub.com/entry/lord-of-the-root-101,129/) `PWNED`
 - [ ] [Tiki-1](https://www.vulnhub.com/entry/tiki-1,525/)
 - [X] [Healthcare 1](https://www.vulnhub.com/entry/healthcare-1,522/) `PWNED`
 - [ ] [Photographer 1](https://www.vulnhub.com/entry/photographer-1,519/)
