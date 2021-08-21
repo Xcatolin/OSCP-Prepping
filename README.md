@@ -20,7 +20,7 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `13/37`
+:dart: `14/38`
  
 - [X] [School 1]( https://www.vulnhub.com/entry/school-1,613/) `PWNED`
 - [x] [DC 9](https://www.vulnhub.com/entry/dc-9,412/) `PWNED`
@@ -64,3 +64,4 @@
 ### Extra - BufferOverflow's
 
 - [X] [TryHackMe's BufferOverflowPrep](https://tryhackme.com/room/bufferoverflowprep) `PWNED`
+- [X] [VulnServer](https://github.com/stephenbradshaw/vulnserver) `PWNED`
