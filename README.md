@@ -20,7 +20,7 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `16/38`
+:dart: `17/38`
  
 - [X] [School 1]( https://www.vulnhub.com/entry/school-1,613/) `PWNED`
 - [x] [DC 9](https://www.vulnhub.com/entry/dc-9,412/) `PWNED`
@@ -31,7 +31,7 @@
 - [ ] [Digitalworld.local (JOY)](https://www.vulnhub.com/entry/digitalworldlocal-joy,298/)
 - [x] [Prime 1](https://www.vulnhub.com/entry/prime-1,358/) `PWNED`
 - [X] [Symfonos 1](https://www.vulnhub.com/entry/symfonos-1,322/) `PWNED`
-- [ ] [Symfonos 2](https://www.vulnhub.com/entry/symfonos-2,331/)
+- [X] [Symfonos 2](https://www.vulnhub.com/entry/symfonos-2,331/) `PWNED`
 - [ ] [Symfonos 3](https://www.vulnhub.com/entry/symfonos-3,332/)
 - [ ] [Symfonos 4](https://www.vulnhub.com/entry/symfonos-4,347/)
 - [ ] [Symfonos 5.2](https://www.vulnhub.com/entry/symfonos-52,415/)
