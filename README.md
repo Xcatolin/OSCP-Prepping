@@ -20,7 +20,7 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `17/38`
+:dart: `18/38`
  
 - [X] [School 1]( https://www.vulnhub.com/entry/school-1,613/) `PWNED`
 - [x] [DC 9](https://www.vulnhub.com/entry/dc-9,412/) `PWNED`
@@ -40,7 +40,7 @@
 - [ ] [Djinn 1](https://www.vulnhub.com/entry/djinn-1,397/)
 - [X] [EVM 1](https://www.vulnhub.com/entry/evm-1,391/) `PWNED`
 - [X] [DerpNStink 1](https://www.vulnhub.com/entry/derpnstink-1,221/) `PWNED`
-- [ ] [RickdiculouslyEasy 1](https://www.vulnhub.com/entry/rickdiculouslyeasy-1,207/)
+- [X] [RickdiculouslyEasy 1](https://www.vulnhub.com/entry/rickdiculouslyeasy-1,207/)`PWNED`
 - [ ] [Tommy Boy 1](https://www.vulnhub.com/entry/tommy-boy-1,157/)
 - [ ] [Breach 1](https://www.vulnhub.com/entry/breach-1,152/)
 - [ ] [Breach 2.1](https://www.vulnhub.com/entry/breach-21,159/)
