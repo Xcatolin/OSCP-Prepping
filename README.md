@@ -50,7 +50,7 @@
 - [X] [Toppo 1](https://www.vulnhub.com/entry/toppo-1,245/) `PWNED`
 - [X] [W34kn3ss 1](https://www.vulnhub.com/entry/w34kn3ss-1,270/) `PWNED`
 - [X] [Infosec Prep OSCP Box](https://www.vulnhub.com/entry/infosec-prep-oscp,508/) `PWNED`
-- [ ] [LemonSqueezy](https://www.vulnhub.com/entry/lemonsqueezy-1,473/)
+- [X] [LemonSqueezy](https://www.vulnhub.com/entry/lemonsqueezy-1,473/) `PWNED`
 - [X] [Brainpan 1](https://www.vulnhub.com/entry/brainpan-1,51/) `PWNED`
 - [ ] [Pinkys Palace v1](https://www.vulnhub.com/entry/pinkys-palace-v1,225/)
 - [X] [Lord of the root 1.0.1](https://www.vulnhub.com/entry/lord-of-the-root-101,129/) `PWNED`
