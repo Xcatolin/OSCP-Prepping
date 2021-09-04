@@ -57,7 +57,6 @@
 - [X] [Tiki-1](https://www.vulnhub.com/entry/tiki-1,525/) `PWNED`
 - [X] [Healthcare 1](https://www.vulnhub.com/entry/healthcare-1,522/) `PWNED`
 - [X] [Photographer 1](https://www.vulnhub.com/entry/photographer-1,519/) `PWNED`
-- [ ] [Glasgow Smile 1.1](https://www.vulnhub.com/entry/glasgow-smile-11,491/)
 - [ ] <strike> [Alpha 1](https://www.vulnhub.com/entry/alfa-1,655/)</strike> `Offline`
 
 
