@@ -16,11 +16,13 @@
 
 </pre>
 
-#### Here's a list of VulnHub machines for OSCP preparation. I'm gonna be posting WriteUps for those as i pwn them.
+#### Here's a list of machines for OSCP preparation. I'm gonna be posting WriteUps for those as i pwn them.
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `23/54`
+:dart: `23/55`
+
+### VulnHub
 
 - [ ] [Kioptrix: 2014](https://www.vulnhub.com/entry/kioptrix-2014-5,62/)
 - [ ] [FristiLeaks: 1.3](https://www.vulnhub.com/entry/fristileaks-13,133/)
@@ -38,7 +40,6 @@
 - [ ] [PwnLab: init](https://www.vulnhub.com/entry/pwnlab-init,158/)
 - [ ] [Mr Robot](https://www.vulnhub.com/entry/mr-robot-1,151/)
 - [ ] [HackLab: Vulnix](https://www.vulnhub.com/entry/hacklab-vulnix,48/)
-- [ ] [IMF](https://www.vulnhub.com/entry/imf-1,162/)
 - [X] [School 1]( https://www.vulnhub.com/entry/school-1,613/) `PWNED`
 - [x] [DC 9](https://www.vulnhub.com/entry/dc-9,412/) `PWNED`
 - [x] [DevGuru 1](https://www.vulnhub.com/entry/devguru-1,620/) `PWNED`
@@ -74,6 +75,11 @@
 - [X] [Healthcare 1](https://www.vulnhub.com/entry/healthcare-1,522/) `PWNED`
 - [X] [Photographer 1](https://www.vulnhub.com/entry/photographer-1,519/) `PWNED`
 - [ ] <strike> [Alpha 1](https://www.vulnhub.com/entry/alfa-1,655/)</strike> `Offline`
+
+### TryHackMe
+
+- [ ] [LazyAdmin](https://tryhackme.com/room/lazyadmin)
+- [ ] [CMesS](https://tryhackme.com/room/cmess)
 
 
 ### Extra - BufferOverflow's
