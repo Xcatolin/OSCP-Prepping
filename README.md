@@ -20,7 +20,7 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `24/55`
+:dart: `25/55`
 
 ### VulnHub
 
@@ -79,7 +79,7 @@
 ### TryHackMe
 
 - [X] [LazyAdmin](https://tryhackme.com/room/lazyadmin)
-- [ ] [CMesS](https://tryhackme.com/room/cmess)
+- [X] [CMesS](https://tryhackme.com/room/cmess)
 
 
 ### Extra - BufferOverflow's
