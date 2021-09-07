@@ -20,7 +20,7 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `23/55`
+:dart: `24/55`
 
 ### VulnHub
 
@@ -78,7 +78,7 @@
 
 ### TryHackMe
 
-- [ ] [LazyAdmin](https://tryhackme.com/room/lazyadmin)
+- [X] [LazyAdmin](https://tryhackme.com/room/lazyadmin)
 - [ ] [CMesS](https://tryhackme.com/room/cmess)
 
 
