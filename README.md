@@ -78,8 +78,8 @@
 
 ### TryHackMe
 
-- [X] [LazyAdmin](https://tryhackme.com/room/lazyadmin)`PWNED`
-- [X] [CMesS](https://tryhackme.com/room/cmess)`PWNED`
+- [X] [LazyAdmin](https://tryhackme.com/room/lazyadmin) `PWNED`
+- [X] [CMesS](https://tryhackme.com/room/cmess) `PWNED`
 
 
 ### Extra - BufferOverflow's
