@@ -24,7 +24,6 @@
 
 ### VulnHub
 
-- [ ] [Kioptrix: 2014](https://www.vulnhub.com/entry/kioptrix-2014-5,62/)
 - [ ] [FristiLeaks: 1.3](https://www.vulnhub.com/entry/fristileaks-13,133/)
 - [ ] [Stapler: 1](https://www.vulnhub.com/entry/stapler-1,150/)
 - [ ] [VulnOS: 2](https://www.vulnhub.com/entry/vulnos-2,147/)
@@ -37,6 +36,7 @@
 - [ ] [Kioptrix: Level 1.1](https://www.vulnhub.com/entry/kioptrix-level-11-2,23/)
 - [ ] [Kioptrix: Level 1.2](https://www.vulnhub.com/entry/kioptrix-level-12-3,24/)
 - [ ] [Kioptrix: Level 1.3](https://www.vulnhub.com/entry/kioptrix-level-13-4,25/)
+- [ ] [Kioptrix: 2014](https://www.vulnhub.com/entry/kioptrix-2014-5,62/)
 - [ ] [PwnLab: init](https://www.vulnhub.com/entry/pwnlab-init,158/)
 - [ ] [Mr Robot](https://www.vulnhub.com/entry/mr-robot-1,151/)
 - [ ] [HackLab: Vulnix](https://www.vulnhub.com/entry/hacklab-vulnix,48/)
