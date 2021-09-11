@@ -20,7 +20,7 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `25/55`
+:dart: `26/58`
 
 ### VulnHub
 
@@ -81,6 +81,11 @@
 - [X] [LazyAdmin](https://tryhackme.com/room/lazyadmin) `PWNED`
 - [X] [CMesS](https://tryhackme.com/room/cmess) `PWNED`
 
+### eJPT - PTS Labs
+
+- [X] Black-box Penetration Test 1 `PWNED`
+- [ ] Black-box Penetration Test 2 `PWNED`
+- [ ] Black-box Penetration Test 3 `PWNED`
 
 ### Extra - BufferOverflow's
 
