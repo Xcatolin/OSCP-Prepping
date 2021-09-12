@@ -84,7 +84,7 @@
 ### eJPT - PTS Labs
 
 - [X] Black-box Penetration Test 1 `PWNED`
-- [ ] Black-box Penetration Test 2 
+- [X] Black-box Penetration Test 2 `PWNED`
 - [ ] Black-box Penetration Test 3 
 
 ### Extra - BufferOverflow's
