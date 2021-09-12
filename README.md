@@ -20,7 +20,7 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `27/58`
+:dart: `28/58`
 
 ### VulnHub
 
@@ -85,7 +85,7 @@
 
 - [X] Black-box Penetration Test 1 `PWNED`
 - [X] Black-box Penetration Test 2 `PWNED`
-- [ ] Black-box Penetration Test 3 
+- [X] Black-box Penetration Test 3 `PWNED`
 
 ### Extra - BufferOverflow's
 
