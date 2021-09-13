@@ -24,7 +24,6 @@
 
 ### VulnHub
 
-- [ ] [FristiLeaks: 1.3](https://www.vulnhub.com/entry/fristileaks-13,133/)
 - [ ] [Stapler: 1](https://www.vulnhub.com/entry/stapler-1,150/)
 - [ ] [VulnOS: 2](https://www.vulnhub.com/entry/vulnos-2,147/)
 - [ ] [SickOs: 1.2](https://www.vulnhub.com/entry/sickos-12,144/)
