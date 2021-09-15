@@ -81,8 +81,9 @@
 - [X] [CMesS](https://tryhackme.com/room/cmess) `PWNED`
 - [X] [Agent Sudo](https://tryhackme.com/room/agentsudoctf) `PWNED`
 - [X] [Bounty Hacker](https://tryhackme.com/room/cowboyhacker) `PWNED`
-- [X] [tomghost](https://tryhackme.com/room/tomghost)
-- [ ] [The Cod Caper](https://tryhackme.com/room/thecodcaper)
+- [X] [tomghost](https://tryhackme.com/room/tomghost) `PWNED`
+- [X] [The Cod Caper](https://tryhackme.com/room/thecodcaper) `PWNED`
+- [ ] [Wgel](https://tryhackme.com/room/wgelctf) 
 
 ### eJPT - PTS Labs
 
