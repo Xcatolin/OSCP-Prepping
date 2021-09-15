@@ -20,7 +20,7 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `28/58`
+:dart: `30/60`
 
 ### VulnHub
 
@@ -79,6 +79,8 @@
 
 - [X] [LazyAdmin](https://tryhackme.com/room/lazyadmin) `PWNED`
 - [X] [CMesS](https://tryhackme.com/room/cmess) `PWNED`
+- [X] [Agent Sudo](https://tryhackme.com/room/agentsudoctf) `PWNED`
+- [X] [Bounty Hacker](https://tryhackme.com/room/cowboyhacker) `PWNED`
 
 ### eJPT - PTS Labs
 
