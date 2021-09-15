@@ -81,8 +81,7 @@
 - [X] [CMesS](https://tryhackme.com/room/cmess) `PWNED`
 - [X] [Agent Sudo](https://tryhackme.com/room/agentsudoctf) `PWNED`
 - [X] [Bounty Hacker](https://tryhackme.com/room/cowboyhacker) `PWNED`
-- [ ] [tomghost](https://tryhackme.com/room/tomghost)
-- [ ] [Blaster](https://tryhackme.com/room/blaster)
+- [X] [tomghost](https://tryhackme.com/room/tomghost)
 - [ ] [The Cod Caper](https://tryhackme.com/room/thecodcaper)
 
 ### eJPT - PTS Labs
@@ -91,7 +90,7 @@
 - [X] Black-box Penetration Test 2 `PWNED`
 - [X] Black-box Penetration Test 3 `PWNED`
 
-### Extra - BufferOverflow's
+### BufferOverflow's
 
 - [X] [TryHackMe's BufferOverflowPrep](https://tryhackme.com/room/bufferoverflowprep) `PWNED`
 - [X] [VulnServer](https://github.com/stephenbradshaw/vulnserver) `PWNED`
