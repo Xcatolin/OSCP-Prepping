@@ -20,7 +20,7 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `35/66`
+:dart: `35/67`
 
 ### VulnHub
 
@@ -84,9 +84,8 @@
 - [X] [tomghost](https://tryhackme.com/room/tomghost) `PWNED`
 - [X] [The Cod Caper](https://tryhackme.com/room/thecodcaper) `PWNED`
 - [X] [Wgel](https://tryhackme.com/room/wgelctf) `PWNED`
-- [X] [GamingServer](https://tryhackme.com/room/gamingserver)
-- [X] [Cyborg](https://tryhackme.com/room/cyborgt8)
-- [ ] [ColddBox](https://tryhackme.com/room/colddboxeasy)
+- [X] [GamingServer](https://tryhackme.com/room/gamingserver) `PWNED`
+- [X] [Cyborg](https://tryhackme.com/room/cyborgt8) `PWNED`
 
 ### eJPT - PTS Labs
 
@@ -98,3 +97,8 @@
 
 - [X] [TryHackMe's BufferOverflowPrep](https://tryhackme.com/room/bufferoverflowprep) `PWNED`
 - [X] [VulnServer](https://github.com/stephenbradshaw/vulnserver) `PWNED`
+
+### Privilege Escalation
+
+- [ ] [TryHackMe's Linux PrivEsc Arena](https://tryhackme.com/room/linuxprivescarena)
+- [ ] [Windows PrivEsc](https://tryhackme.com/room/windows10privesc)
