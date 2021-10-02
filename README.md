@@ -20,7 +20,7 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `32/67`
+:dart: `36/61`
 
 ### VulnHub
 
