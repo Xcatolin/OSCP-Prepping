@@ -20,7 +20,7 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `35/67`
+:dart: `32/67`
 
 ### VulnHub
 
@@ -58,9 +58,6 @@
 - [X] [EVM 1](https://www.vulnhub.com/entry/evm-1,391/) `PWNED`
 - [X] [DerpNStink 1](https://www.vulnhub.com/entry/derpnstink-1,221/) `PWNED`
 - [X] [RickdiculouslyEasy 1](https://www.vulnhub.com/entry/rickdiculouslyeasy-1,207/)`PWNED`
-- [ ] [Breach 1](https://www.vulnhub.com/entry/breach-1,152/)
-- [ ] [Breach 2.1](https://www.vulnhub.com/entry/breach-21,159/)
-- [ ] [Breach 3.0.1](https://www.vulnhub.com/entry/breach-301,177/)
 - [X] [NullByte](https://www.vulnhub.com/entry/nullbyte-1,126/) `PWNED`
 - [X] [Bob 1.0.1](https://www.vulnhub.com/entry/bob-101,226/) `PWNED`
 - [X] [Toppo 1](https://www.vulnhub.com/entry/toppo-1,245/) `PWNED`
