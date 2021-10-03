@@ -20,11 +20,10 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `37/58`
+:dart: `37/57`
 
 ### VulnHub
 
-- [ ] [Stapler: 1](https://www.vulnhub.com/entry/stapler-1,150/)
 - [ ] [VulnOS: 2](https://www.vulnhub.com/entry/vulnos-2,147/)
 - [ ] [SickOs: 1.2](https://www.vulnhub.com/entry/sickos-12,144/)
 - [ ] [HackLAB: Vulnix](https://www.vulnhub.com/entry/hacklab-vulnix,48/)
