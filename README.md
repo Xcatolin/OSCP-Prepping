@@ -20,12 +20,12 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `38/57`
+:dart: `39/57`
 
 ### VulnHub
 
 - [X] [VulnOS: 2](https://www.vulnhub.com/entry/vulnos-2,147/) `PWNED`
-- [ ] [SickOs: 1.2](https://www.vulnhub.com/entry/sickos-12,144/)
+- [X] [SickOs: 1.2](https://www.vulnhub.com/entry/sickos-12,144/) `PWNED`
 - [ ] [HackLAB: Vulnix](https://www.vulnhub.com/entry/hacklab-vulnix,48/)
 - [ ] [/dev/random: scream](https://www.vulnhub.com/entry/devrandom-scream,47/)
 - [ ] [pWnOS: 2.0](https://www.vulnhub.com/entry/pwnos-20-pre-release,34/)
