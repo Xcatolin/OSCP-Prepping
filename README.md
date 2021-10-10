@@ -20,7 +20,7 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `42/54`
+:dart: `42/55`
 
 ### VulnHub
 
@@ -75,6 +75,7 @@
 - [X] [Wgel](https://tryhackme.com/room/wgelctf) `PWNED`
 - [X] [GamingServer](https://tryhackme.com/room/gamingserver) `PWNED`
 - [X] [Cyborg](https://tryhackme.com/room/cyborgt8) `PWNED`
+- [ ] [Relevant](https://tryhackme.com/room/relevant)
 
 ### eJPT - PTS Labs
 
