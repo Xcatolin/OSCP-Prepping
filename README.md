@@ -20,7 +20,7 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `42/55`
+:dart: `43/55`
 
 ### VulnHub
 
@@ -33,7 +33,7 @@
 - [ ] [Kioptrix: Level 1.2](https://www.vulnhub.com/entry/kioptrix-level-12-3,24/)
 - [ ] [Kioptrix: Level 1.3](https://www.vulnhub.com/entry/kioptrix-level-13-4,25/)
 - [ ] [Kioptrix: 2014](https://www.vulnhub.com/entry/kioptrix-2014-5,62/)
-- [ ] [PwnLab: init](https://www.vulnhub.com/entry/pwnlab-init,158/)
+- [X] [PwnLab: init](https://www.vulnhub.com/entry/pwnlab-init,158/) `PWNED`
 - [X] [Mr Robot](https://www.vulnhub.com/entry/mr-robot-1,151/) `PWNED`
 - [X] [School 1]( https://www.vulnhub.com/entry/school-1,613/) `PWNED`
 - [x] [DC 9](https://www.vulnhub.com/entry/dc-9,412/) `PWNED`
