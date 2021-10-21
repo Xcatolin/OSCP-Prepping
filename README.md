@@ -20,7 +20,7 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `45/55`
+:dart: `45/54`
 
 ### VulnHub
 
@@ -28,7 +28,6 @@
 - [X] [SickOs: 1.2](https://www.vulnhub.com/entry/sickos-12,144/) `PWNED`
 - [X] [HackLAB: Vulnix](https://www.vulnhub.com/entry/hacklab-vulnix,48/) `PWNED`
 - [X] [SkyTower: 1](https://www.vulnhub.com/entry/skytower-1,96/) `PWNED`
-- [ ] [Kioptrix: Level 1](https://www.vulnhub.com/entry/kioptrix-level-1-1,22/)
 - [ ] [Kioptrix: Level 1.1](https://www.vulnhub.com/entry/kioptrix-level-11-2,23/)
 - [ ] [Kioptrix: Level 1.2](https://www.vulnhub.com/entry/kioptrix-level-12-3,24/)
 - [X] [Kioptrix: Level 1.3](https://www.vulnhub.com/entry/kioptrix-level-13-4,25/) `PWNED`
