@@ -20,7 +20,7 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `49/57`
+:dart: `50/57`
 
 ### VulnHub
 
@@ -59,7 +59,7 @@
 - [X] [Brainpan 1](https://www.vulnhub.com/entry/brainpan-1,51/) `PWNED`
 - [X] [Lord of the root 1.0.1](https://www.vulnhub.com/entry/lord-of-the-root-101,129/) `PWNED`
 - [X] [Tiki-1](https://www.vulnhub.com/entry/tiki-1,525/) `PWNED`
-- [ ] [Tr0ll 1](https://www.vulnhub.com/entry/tr0ll-1,100/)
+- [X] [Tr0ll 1](https://www.vulnhub.com/entry/tr0ll-1,100/) `PWNED`
 - [ ] [Tr0ll 2](https://www.vulnhub.com/entry/tr0ll-2,107/)
 - [X] [SolidState 1](https://www.vulnhub.com/entry/solidstate-1,261/) `PWNED`
 - [X] [Healthcare 1](https://www.vulnhub.com/entry/healthcare-1,522/) `PWNED`
