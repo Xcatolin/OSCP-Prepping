@@ -20,10 +20,15 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `54/57`
+:dart: `54/61
 
 ### VulnHub
 
+- [ ] [W1R3sps://www.vulnhub.com/entry/w1r3s-101,220/)
+- [ ] [Droopy](https://www.vulnhub.com/entry/droopy-v02,143/)
+- [ ] [DC: 1ps://www.vulnhub.com/entry/dc-1-1,292/)
+- [ ] [HA: Wordy](https://www.vulnhub.com/entry/ha-wordy,363/)
+- [ ] [Violator:1](https://www.vulnhub.com/entry/violator-1,153/)
 - [X] [Pentester Lab: S2-052](https://www.vulnhub.com/entry/pentester-lab-s2-052,206/) `PWNED`
 - [X] [Hacker Fest: 2019](https://www.vulnhub.com/entry/hacker-fest-2019,378/) `PWNED`
 - [X] [VulnOS: 2](https://www.vulnhub.com/entry/vulnos-2,147/) `PWNED`
@@ -77,7 +82,6 @@
 - [X] [Wgel](https://tryhackme.com/room/wgelctf) `PWNED`
 - [X] [GamingServer](https://tryhackme.com/room/gamingserver) `PWNED`
 - [X] [Cyborg](https://tryhackme.com/room/cyborgt8) `PWNED`
-- [ ] [Relevant](https://tryhackme.com/room/relevant)
 
 ### eJPT - PTS Labs
 
