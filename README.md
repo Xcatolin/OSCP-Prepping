@@ -24,9 +24,9 @@
 
 ### VulnHub
 
-- [ ] [W1R3sps://www.vulnhub.com/entry/w1r3s-101,220/)
+- [ ] [W1R3S](https://www.vulnhub.com/entry/w1r3s-101,220/)
 - [X] [Droopy](https://www.vulnhub.com/entry/droopy-v02,143/) `PWNED`
-- [ ] [DC: 1ps://www.vulnhub.com/entry/dc-1-1,292/)
+- [ ] [DC: 1](https://www.vulnhub.com/entry/dc-1-1,292/)
 - [ ] [HA: Wordy](https://www.vulnhub.com/entry/ha-wordy,363/)
 - [ ] [Violator:1](https://www.vulnhub.com/entry/violator-1,153/)
 - [X] [Pentester Lab: S2-052](https://www.vulnhub.com/entry/pentester-lab-s2-052,206/) `PWNED`
