@@ -20,14 +20,14 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `57/61`
+:dart: `58/61`
 
 ### VulnHub
 
 - [X] [W1R3S](https://www.vulnhub.com/entry/w1r3s-101,220/) `PWNED`
 - [X] [Droopy](https://www.vulnhub.com/entry/droopy-v02,143/) `PWNED`
 - [X] [DC: 1](https://www.vulnhub.com/entry/dc-1-1,292/) `PWNED`
-- [ ] [HA: Wordy](https://www.vulnhub.com/entry/ha-wordy,363/)
+- [X] [HA: Wordy](https://www.vulnhub.com/entry/ha-wordy,363/) `PWNED`
 - [ ] [Violator:1](https://www.vulnhub.com/entry/violator-1,153/)
 - [X] [Pentester Lab: S2-052](https://www.vulnhub.com/entry/pentester-lab-s2-052,206/) `PWNED`
 - [X] [Hacker Fest: 2019](https://www.vulnhub.com/entry/hacker-fest-2019,378/) `PWNED`
