@@ -20,12 +20,12 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `59/62`
+:dart: `60/62`
 
 ### VulnHub
 
 - [X] [HackMePlease1](https://www.vulnhub.com/entry/hack-me-please-1,731/) `PWNED`
-- [ ] [WinterMute1](https://www.vulnhub.com/entry/wintermute-1,239/)
+- [X] [WinterMute1](https://www.vulnhub.com/entry/wintermute-1,239/) `PWNED`
 - [X] [W1R3S](https://www.vulnhub.com/entry/w1r3s-101,220/) `PWNED`
 - [X] [Droopy](https://www.vulnhub.com/entry/droopy-v02,143/) `PWNED`
 - [X] [DC: 1](https://www.vulnhub.com/entry/dc-1-1,292/) `PWNED`
