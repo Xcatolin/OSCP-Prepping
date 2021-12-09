@@ -20,10 +20,12 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `60/62`
+:dart: `60/64`
 
 ### VulnHub
 
+- [ ] [eLection: 1](https://www.vulnhub.com/entry/election-1,503/)
+- [ ] [The Ether: EvilScience](https://www.vulnhub.com/entry/the-ether-evilscience-v101,212/)
 - [X] [HackMePlease1](https://www.vulnhub.com/entry/hack-me-please-1,731/) `PWNED`
 - [X] [WinterMute1](https://www.vulnhub.com/entry/wintermute-1,239/) `PWNED`
 - [X] [W1R3S](https://www.vulnhub.com/entry/w1r3s-101,220/) `PWNED`
