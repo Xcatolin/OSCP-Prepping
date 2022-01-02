@@ -20,9 +20,10 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `60/64`
+:dart: `61/65`
 
 ### VulnHub
+
 
 - [ ] [eLection: 1](https://www.vulnhub.com/entry/election-1,503/)
 - [ ] [The Ether: EvilScience](https://www.vulnhub.com/entry/the-ether-evilscience-v101,212/)
@@ -30,7 +31,9 @@
 - [X] [WinterMute1](https://www.vulnhub.com/entry/wintermute-1,239/) `PWNED`
 - [X] [W1R3S](https://www.vulnhub.com/entry/w1r3s-101,220/) `PWNED`
 - [X] [Droopy](https://www.vulnhub.com/entry/droopy-v02,143/) `PWNED`
-- [X] [DC: 1](https://www.vulnhub.com/entry/dc-1-1,292/) `PWNED`
+- [X] [DC-1](https://www.vulnhub.com/entry/dc-1-1,292/) `PWNED`
+- [X] [DC-6](https://www.vulnhub.com/entry/dc-6,315/) `PWNED`
+- [x] [DC 9](https://www.vulnhub.com/entry/dc-9,412/) `PWNED`
 - [X] [HA: Wordy](https://www.vulnhub.com/entry/ha-wordy,363/) `PWNED`
 - [X] [Pentester Lab: S2-052](https://www.vulnhub.com/entry/pentester-lab-s2-052,206/) `PWNED`
 - [X] [Hacker Fest: 2019](https://www.vulnhub.com/entry/hacker-fest-2019,378/) `PWNED`
@@ -45,7 +48,6 @@
 - [X] [PwnLab: init](https://www.vulnhub.com/entry/pwnlab-init,158/) `PWNED`
 - [X] [Mr Robot](https://www.vulnhub.com/entry/mr-robot-1,151/) `PWNED`
 - [X] [School 1]( https://www.vulnhub.com/entry/school-1,613/) `PWNED`
-- [x] [DC 9](https://www.vulnhub.com/entry/dc-9,412/) `PWNED`
 - [x] [DevGuru 1](https://www.vulnhub.com/entry/devguru-1,620/) `PWNED`
 - [X] [Digitalworld.local (Bravery)](https://www.vulnhub.com/entry/digitalworldlocal-bravery,281/) `PWNED`
 - [X] [Digitalworld.local (Mercy v2)](https://www.vulnhub.com/entry/digitalworldlocal-mercy-v2,263/) `PWNED`
