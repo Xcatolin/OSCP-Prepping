@@ -20,7 +20,7 @@
 
 ##### All content is uploaded in the .ctd extension, exported from CherryTree.
   
-:dart: `64/68`
+:dart: `65/69`
 
 ### VulnHub
 
@@ -90,6 +90,7 @@
 - [X] [Blueprint](https://tryhackme.com/room/blueprint)`PWNED`
 - [X] [Retro](https://tryhackme.com/room/retro) `PWNED`
 - [X] [Ra](https://tryhackme.com/room/ra) `PWNED`
+- [X] [Internal](https://tryhackme.com/room/internal) `PWNED`
 
 ### eJPT - PTS Labs
 
